@@ -1,27 +1,8 @@
 import tensorflow as tf
 
-# with tf.compat.v1.Session() as sess:
-#     frase = tf.constant('Olá Mundo!')
-#     rodar = sess.run(frase)
-#     print(rodar.decode('UTF-8'))
+A = tf.constant([[1,2,3],[4,5,6]])
+B = tf.constant([[0,0],[1,0],[0,1]])
 
-# frase = tf.constant("Olá Mundo!")
-# print(frase)
+C = tf.matmul(A,B)
 
-a = tf.constant(5)
-b = tf.constant(3)
-c = tf.constant(2)
-
-d = tf.multiply(a, b)
-e = tf.add(b, c)
-f = tf.subtract(d,e)
-
-saida = tf.get_static_value(a)
-tf.print(b)
-tf.print(c)
-tf.print(d)
-tf.print(e)
-tf.print(f)
-
-print("###################")
-print(f)
+tf.print(C)
