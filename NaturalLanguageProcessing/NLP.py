@@ -1,10 +1,9 @@
 from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
-import tensorflow as tf
+from TermFrequencyInverseDocumentFrequency import TermFrequencyInverseDocumentFrequency
 import os
 
-from gensim.test.utils import common_texts
-from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+from gensim import corpora
 
 CORPUS_PATH = "../Corpus/"
 
@@ -22,6 +21,4 @@ newlistNews = PreProcessing.removeNumerals(newlistNews)
 newlistNews = PreProcessing.toLowerCase(newlistNews)
 #listNews = PreProcessing.toSplit(listNews)
 
-teste = DocumentRepresentationDoc2Vec(newlistNews)
-print(teste.documents)
-print(teste.paragraphVectorDistributedMemory())
+print(TermFrequencyInverseDocumentFrequency.createVectors(newlistNews))
