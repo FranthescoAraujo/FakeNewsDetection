@@ -3,7 +3,7 @@ from gensim.models import TfidfModel
 from gensim import corpora
 
 class TermFrequencyInverseDocumentFrequency:
-    def createVectors(documents):
+    def createVectors(self, documents):
         textSplit = PreProcessing.toSplit(documents)
         dictionary = corpora.Dictionary(textSplit)
         corpus = [dictionary.doc2bow(line) for line in textSplit]
