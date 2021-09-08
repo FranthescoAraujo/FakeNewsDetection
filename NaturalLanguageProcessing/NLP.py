@@ -1,9 +1,8 @@
 from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
 from TermFrequencyInverseDocumentFrequency import TermFrequencyInverseDocumentFrequency
+from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec
 import os
-
-from gensim import corpora
 
 CORPUS_PATH = "../Corpus/"
 
@@ -19,6 +18,5 @@ newlistNews = PreProcessing.removeAccentuation(listNews)
 newlistNews = PreProcessing.removeSpecialCharacters(newlistNews)
 newlistNews = PreProcessing.removeNumerals(newlistNews)
 newlistNews = PreProcessing.toLowerCase(newlistNews)
-#listNews = PreProcessing.toSplit(listNews)
 
-print(TermFrequencyInverseDocumentFrequency.createVectors(newlistNews))
+

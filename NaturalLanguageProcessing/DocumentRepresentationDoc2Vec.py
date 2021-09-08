@@ -1,7 +1,6 @@
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 
 class DocumentRepresentationDoc2Vec:
-    from gensim.models.doc2vec import Doc2Vec, TaggedDocument
     documents = []
     def __init__(self, documents):
         self.documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(documents)]

@@ -1,29 +1,45 @@
+from PreProcessing import PreProcessing
+from gensim.models.word2vec import Word2Vec
+import numpy
+
 class DocumentRepresentationWord2Vec:
-    skipGramWordsRepresentation = []
-    continuousBagOfWordsWordsRepresentation = []
     documents = []
 
     def __init__(self, documents):
-        self.documents = documents
+        self.documents = PreProcessing.toSplit(documents)
 
-    def skipGram(window_size = 10, representation_size = 100):
-        pass
-    
-    def continuousBagOfWords(window_size = 10, representation_size = 100):
-        pass
+    def skipGramDocumentRepresentation(self, window_size = 10, vector_size = 100, meanSumOrConcat = 0):
+        model = Word2Vec(sentences=self.documents, vector_size=vector_size, window=window_size, workers=4, sg=1, min_count=1).wv
+        returnValue = []
+        for document in self.documents:
+            documentRepresentation = [0]*vector_size
+            numWords = len(document)
+            for word in document:
+                if meanSumOrConcat == 0:
+                    documentRepresentation+=model[word]
+                if meanSumOrConcat == 1:
+                    documentRepresentation+=model[word]
+                    numWords = 1
+                if meanSumOrConcat == 2:
+                    numWords = 1
+                    pass
+            returnValue.append(numpy.divide(documentRepresentation,numWords).tolist())
+        return returnValue
 
-    def skipGramDocumentRepresentation(meanSumOrConcat = 0):
-        if meanSumOrConcat == 0:
-            return
-        if meanSumOrConcat == 1:
-            return
-        if meanSumOrConcat == 2:
-            return
-
-    def continuousBagOfWordsDocumentRepresentation(meanSumOrConcat = 0):
-        if meanSumOrConcat == 0:
-            return
-        if meanSumOrConcat == 1:
-            return
-        if meanSumOrConcat == 2:
-            return
+    def continuousBagOfWordsDocumentRepresentation(self, window_size = 10, vector_size = 100, meanSumOrConcat = 0):
+        model = Word2Vec(sentences=self.documents, vector_size=vector_size, window=window_size, workers=4, sg=0, min_count=1).wv
+        returnValue = []
+        for document in self.documents:
+            documentRepresentation = [0]*vector_size
+            numWords = len(document)
+            for word in document:
+                if meanSumOrConcat == 0:
+                    documentRepresentation+=model[word]
+                if meanSumOrConcat == 1:
+                    documentRepresentation+=model[word]
+                    numWords = 1
+                if meanSumOrConcat == 2:
+                    numWords = 1
+                    pass
+            returnValue.append(numpy.divide(documentRepresentation,numWords).tolist())
+        return returnValue

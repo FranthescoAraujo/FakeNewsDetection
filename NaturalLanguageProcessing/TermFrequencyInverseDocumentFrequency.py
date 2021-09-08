@@ -1,4 +1,3 @@
-from gensim.corpora import dictionary
 from PreProcessing import PreProcessing
 from gensim.models import TfidfModel
 from gensim import corpora
