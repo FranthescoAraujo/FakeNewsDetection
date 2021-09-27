@@ -3,13 +3,17 @@ from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
 from TermFrequencyInverseDocumentFrequency import TermFrequencyInverseDocumentFrequency
 from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec
+import time
 import os
 
 import tensorflow.keras as keras
 import numpy as np
+from sklearn.decomposition import PCA
 
-#CORPUS_PATH = "../Corpus/"
-CORPUS_PATH = "../Teste/"
+tic = time.time()
+
+CORPUS_PATH = "../Corpus/"
+#CORPUS_PATH = "../Teste/"
 
 folders = os.listdir(CORPUS_PATH)
 listNews = []
@@ -23,53 +27,69 @@ for folder in folders:
             continue
         listLabel.append(0)
 
+toc = time.time() - tic
+
+print("Etapa 01 - Carregando Dataset - " + str(toc) + " segundos")
+
+tic = time.time()
+
 newlistNews = PreProcessing.removeAccentuation(listNews)
 newlistNews = PreProcessing.removeSpecialCharacters(newlistNews)
 newlistNews = PreProcessing.removeNumerals(newlistNews)
 newlistNews = PreProcessing.toLowerCase(newlistNews)
 
-doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
-listDoc2vecDM = doc2vec.paragraphVectorDistributedMemory()
+toc = time.time() - tic
 
+print("Etapa 02 - Pré-processamento - " + str(toc) + " segundos")
+
+tic = time.time()
+
+# REPRESENTAÇÃO DOC2VEC
+# doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
+# listDoc2vecDM = doc2vec.paragraphVectorDistributedMemory()
 # listDoc2vecDBOW = doc2vec.paragraphVectorDistributedBagOfWords()
 # listDoc2vecConcat = doc2vec.concatBothParagraphVectors()
 
+# REPRESENTAÇÃO WORD2VEC
 # word2vec = DocumentRepresentationWord2Vec(newlistNews)
 # listWord2VecSkipGram = word2vec.skipGramDocumentRepresentation()
 # listWord2VecCBOW = word2vec.continuousBagOfWordsDocumentRepresentation()
 
-# tfidf = TermFrequencyInverseDocumentFrequency()
-# listTfIdf = tfidf.createVectors(newlistNews)
+# REPRESENTAÇÃO TF-IDF
+tfidf = TermFrequencyInverseDocumentFrequency()
+listTfIdf = tfidf.createVectors(newlistNews)
 
-# print("########################################### DOC2VEC - DM ###########################################")
-# print(len(listDoc2vecDM[0]))
-# print(listDoc2vecDM)
-# print("########################################### DOC2VEC - DBOW ###########################################")
-# print(len(listDoc2vecDBOW[0]))
-# print(listDoc2vecDBOW)
-# print("########################################### DOC2VEC - Concat ###########################################")
-# print(len(listDoc2vecConcat[0]))
-# print(listDoc2vecConcat)
-# print("########################################### WORD2VEC - SkipGram ###########################################")
-# print(len(listWord2VecSkipGram[0]))
-# print(listWord2VecSkipGram)
-# print("########################################### WORD2VEC - CBOW ###########################################")
-# print(len(listWord2VecCBOW[0]))
-# print(listWord2VecCBOW)
-# print("########################################### TF - IDF ###########################################")
-# print(len(listTfIdf[0]))
-# print(listTfIdf)
+toc = time.time() - tic
+
+print("Etapa 03 - Processamento de Linguagem Natural - " + str(toc) + " segundos")
+
+tic = time.time()
 
 npList = []
-for document in listDoc2vecDM:
+for document in listTfIdf:
     npList.append(np.array(document))
 npListLabel = []
 for label in listLabel:
     npListLabel.append(np.array(label))
 
 npList = np.array(npList)
-npList = np.expand_dims(npList, axis=2)
 npListLabel = np.array(npListLabel)
+
+toc = time.time() - tic
+
+print("Etapa 04 - Conversão Numpy Array - " + str(toc) + " segundos")
+
+tic = time.time()
+
+pca = PCA(n_components=100)
+npList = pca.fit_transform(npList)
+npList = np.expand_dims(npList, axis=2)
+
+toc = time.time() - tic
+
+print("Etapa 05 - Redução de Dimensionalidade Utilizando PCA - " + str(toc) + " segundos")
+
+tic = time.time()
 
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(100,1)),
@@ -77,4 +97,8 @@ model = keras.Sequential([
     keras.layers.Dense(1)
 ])
 model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
-model.fit(npList, npListLabel, epochs=100)
+model.fit(npList, npListLabel, epochs=10)
+
+toc = time.time() - tic
+
+print("Etapa 06 - Treinamento da Rede - " + str(toc) + " segundos")
