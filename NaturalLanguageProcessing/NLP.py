@@ -18,9 +18,11 @@ CORPUS_PATH = "../Corpus/"
 folders = os.listdir(CORPUS_PATH)
 listNews = []
 listLabel = []
+listText = []
 for folder in folders:
     for file in os.listdir(CORPUS_PATH + folder):
         f = open(CORPUS_PATH + folder + "/" + file, "r")
+        listText.append(CORPUS_PATH + folder + "/" + file)
         listNews.append(f.read())
         if folder == "Fake":
             listLabel.append(1)
@@ -52,12 +54,14 @@ tic = time.time()
 
 # REPRESENTAÇÃO WORD2VEC
 # word2vec = DocumentRepresentationWord2Vec(newlistNews)
-# listWord2VecSkipGram = word2vec.skipGramDocumentRepresentation()
+# listWord2VecSkipGram = word2vec.skipGramDocumentRepresentation(vector_size=200)
 # listWord2VecCBOW = word2vec.continuousBagOfWordsDocumentRepresentation()
 
 # REPRESENTAÇÃO TF-IDF
-tfidf = TermFrequencyInverseDocumentFrequency()
-listTfIdf = tfidf.createVectors(newlistNews)
+# tfidf = TermFrequencyInverseDocumentFrequency()
+# tfidf.countWords(newlistNews)
+# listTfIdf = tfidf.createVectors(newlistNews)
+# tfidf.wordInDocument(newlistNews)
 
 toc = time.time() - tic
 
@@ -75,15 +79,17 @@ for label in listLabel:
 npList = np.array(npList)
 npListLabel = np.array(npListLabel)
 
+print(len(npList[0]))
+
 toc = time.time() - tic
 
 print("Etapa 04 - Conversão Numpy Array - " + str(toc) + " segundos")
 
 tic = time.time()
 
-pca = PCA(n_components=100)
-npList = pca.fit_transform(npList)
-npList = np.expand_dims(npList, axis=2)
+# pca = PCA(n_components=100)
+# npList = pca.fit_transform(npList)
+# npList = np.expand_dims(npList, axis=2)
 
 toc = time.time() - tic
 
