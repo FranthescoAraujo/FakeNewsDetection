@@ -18,7 +18,7 @@ class TermFrequencyInverseDocumentFrequency:
 
     def wordInDocument(self, documents):
         list = []
-        with open('words.txt', 'w') as f:
+        with open('results/words.txt', 'w') as f:
             for index, document in enumerate(documents):
                 for word in document.split():
                     if word not in list:
@@ -34,7 +34,7 @@ class TermFrequencyInverseDocumentFrequency:
                     continue
                 dictionary[word] = 1
         dictionary = dict(sorted(dictionary.items(), key=lambda kv: kv[1], reverse=True))
-        with open('wordsCount.txt', 'w') as f:
+        with open('results/wordsCount.txt', 'w') as f:
             for element in dictionary:
                 f.write(element + " - " + str(dictionary[element]) + "\n")
 
