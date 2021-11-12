@@ -1,0 +1,15 @@
+14048,Error'd: Going Fast,Mark Bowytz,"Mark Bowytz Besides contributing at @TheDailyWTF, I write DevDisasters for Visual Studio Magazine, and involved in various side projects including child rearing and marriage. 
+""This building is sinking so fast that it lost 4 floors between the headline and the body,"" writes Hans . 
+
+""I was looking for a new fridge, for some reason this one didn't quite have the features I was looking for,"" writes Tim D. 
+
+Matt R. wrote, ""Well, I guess the Microsoft Time Estimator has a new job!"" 
+
+""Work is sponsoring a flu shot clinic and the clinic wants to make it really easy for Marylanders,"" writes Rick B. , ""Or really hard...it rejects all but one of the MD entries!"" 
+
+""So, does an inverted dropdown turn into a riseup?"" wrote Tomi A. 
+
+Jordan B. writes, ""Wait, exactly how much storage does Database Engine Tuning Advisor need? I don't think they make hard drives INT64_MAX megabytes in size..."" 
+
+""I didn't know you could 'oSettingsEvent.comest' your audio setup or '.mog' into a meeting,"" writes Peter , ""It doesn't get any easier in French either."" 
+[Advertisement] Incrementally adopt DevOps best practices with BuildMaster , ProGet and Otter , creating a robust, secure, scalable, and reliable DevOps toolchain.",1

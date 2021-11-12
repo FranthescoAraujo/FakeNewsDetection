@@ -1,0 +1,7 @@
+14129,Human-Machine Hybrid Organs Are Being Made Now,nan,"Human-Machine Hybrid Organs Are Being Made Now October 26, 2016 
+Harvard scientists have developed a 3D printed heart on a computer chip, which can be used to study heart conditions without testing medical treatments on animals. The heart-on-chip is composed of a small piece of flexible polymer with integrated sensors that contains living human heart cells , which can mimic the physiological response of a human heart. 
+The sensors collect data on the beating of the heart-on-chip, which can be used to study how tissue responds to drugs or toxins. 
+Scientists from the Wyss Institute at Harvard University believe the technology is a more accurate alternative to testing drugs on animals, and hope it can decrease the number of animals used for testing. 
+“We are pushing the boundaries of three-dimensional printing by developing and integrating multiple functional materials within printed devices,” Jennifer Lewis, senior co-author of the study said in a press release. 
+Other organs, including bones, lungs, the liver, and gut can also be made into organs on a chip. 
+However, it is noted that obtaining data from these chips is costly and can only be done using high-speed cameras or microscopy. Article by Doc Burkhart , Vice-President, General Manager and co-host of TRUNEWS with Rick Wiles Got a news tip? Email us at Help support the ministry of TRUNEWS with your one-time or monthly gift of financial support. DONATE NOW ! DOWNLOAD THE TRUNEWS MOBILE APP! CLICK HERE!  ",1

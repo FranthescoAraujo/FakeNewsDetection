@@ -1,0 +1,6 @@
+6301,Economic Breadth Is Significantly Deteriorating in the US,IWB,"Economic Breadth Is Significantly Deteriorating in the US   
+by CHRIS PUPLAVA 
+Philly Fed state coincident data came out today and more states across the country are starting to contract (shown in red). Looking at the snapshot below, positively growing states still dominate the map (and don’t give much of an alarming picture), but a different story emerges when we look at the trend. 
+Here’s a look at how this data has trended over the past 36 years compared to the S&P 500. As you can see, states showing positive growth tend to rollover prior to economic recessions (red bars) with corresponding declines in the S&P 500. The latest data puts us near the weakest levels during this entire economic cycle and matches prior market tops. 
+There was a strong increase in the number of states with negative monthly changes this year. As shown below, this data typically leads US initial unemployment claims and suggests we could see a pickup in jobless claims (layoffs) in the near future. 
+M&A deal activity (shown inverted below) tends to exhibit a euphoric peak and mark the end of an economic/bull market cycle. In terms of transaction values, M&A activity peaked earlier this year and also argues for a pickup in layoffs ahead.",1

@@ -1,0 +1,15 @@
+1180,Let's Eat - The Daily WTF,Mark Bowytz,"Besides contributing at @TheDailyWTF, I write DevDisasters for Visual Studio Magazine, and involved in various side projects including child rearing and marriage. 
+""Apparently, only a small part of my dinner qualifies as food,"" writes Alex F. 
+
+Hamkakei wrote, ""I've heard of a working lunch, but Amazon seems a little over confident about how much code will be written with this."" 
+
+""404 on Index? Are you feeling OK Github?"" Mattias C. writes. 
+
+""I've heard some bad things about Backup Exec, but you must be doing something good to be able to handle that many jobs,"" wrote Marc B. 
+
+Paul writes, ""Being broken is bad enough, but being broken twice in a row is a whole other story."" 
+
+""I'm pretty good at counting, so am I missing something?"" wrote Silvia 
+
+""So, if I want to see what Windows 10 wants to uninstall, it looks like I'm going to have to give it permission and then look afterwards to see what's missing,"" Smylers writes. 
+[Advertisement] Scale your release pipelines , creating secure, reliable, reusable deployments with one click. Download and learn more today! ",1

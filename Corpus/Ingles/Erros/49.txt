@@ -1,0 +1,11 @@
+2549,Will Carlos Danger Cut a Deal? - Russia News Now,nan,"This post was originally published on this site 
+The criminal investigation underway over Anthony Weiner’s alleged child sex infraction has a couple of characteristics that make it especially awkward for Hillary Clinton and Huma Abedin, the estranged wife of Weiner and close companion of Hillary. 
+Ed Timperlake points out to me that in an underage sex investigation, all electronic communications of the investigative target are pursued. This probably led to the grand jury that was announced 11 days ago issuing a subpoena for all of the devices in the possession of Weiner and his family, including Huma. As Lucianne Goldberg quipped, they even seize the Speak & Spell toys in these cases. This grand jury is in New York, possibly less politically supervised than the first Hillary email investigation. 
+Evidently, some of these devices were not turned over in the first investigation and contained “pertinent” emails. We do not know with certainty, but some reports indicate the pertinent emails may have been found on Weiner’s laptop. Recall that the initial investigation did not convene a grand jury and did not, therefore, have subpoena power. It is possible that Huma Abedin misled the FBI over the existence of pertinent emails on her then husband’s computing devices. 
+So what could have been on the laptop Carlos Danger used for sexting? 
+Adam Yoshida, with a background in information technology consulting for affluent and powerful people emails: 
+…Clinton [was] using e-mails seemingly like most people use IMs or text messaging. Her holding onto Blackberries (and seven switching back to older models when the software was upgraded) [demonstrates this]. It might even explain at least SOME of the motivation for the e-mail server itself. I’ve seen plenty of cases where a powerful person says basically, “I want my e-mails on this thing” and, regardless of whether it’s a good solution, people respond, “ready-aye-ready.” 
+So, what could they have found on Weiner’s computers that would have caused such alarm? 
+I’d think one of two things: 
+1) Either that Huma signed in her e-mail account at one point and, presumably, it being Exchange or IMAP, dumped the whole account onto the computer and that account has plenty of e-mails between her and Clinton that were deleted. 
+Or –

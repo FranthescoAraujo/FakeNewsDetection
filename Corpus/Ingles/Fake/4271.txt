@@ -1,0 +1,5 @@
+8672,Study: Statin Cholesterol-lowering Drug Use Linked to Increase in Parkinson’s Disease,Admin,"Medscape 
+Excerpts: 
+BALTIMORE — New findings from a large national claims database show the use of cholesterol-lowering statin drugs to be associated with an increased risk for Parkinson’s disease (PD), contrary to previous research suggesting the drugs have a protective effect for PD. 
+“We identified 20,000 Parkinson’s disease patients and looked at whether using statins was associated with a higher or lower risk, and we found people using statins have a higher risk of the disease, so this is the opposite of what has been hypothesized,” senior author Xuemei Huang, MD, PhD, vice chair for research at Penn State College of Medicine, Hershey, Pennsylvania, told Medscape Medical News . 
+While high cholesterol has been shown to have a protective effect on the risk for PD, the role of statin use has been the subject of debate. Published on October 31, 2016",1

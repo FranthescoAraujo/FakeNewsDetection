@@ -1,0 +1,10 @@
+4496,AI System That Has Accurately Predicted Last 3 Elections Just Made Its Pick... and Wow,Jason Howerton,"Getty - Justin Sullivan 
+The artificial intelligence system that has accurately predicted the outcomes of every U.S. presidential election since it was created in 2004 is forecasting a Donald Trump victory. 
+Using various data, including engagement on Facebook and Twitter, the AI system found that Trump is outpacing Barack Obama’s peak engagement numbers during his historic 2008 campaign by 25 percent. 
+CNBC has more details : 
+MogIA was developed by Sanjiv Rai, the founder of Indian start-up Genic.ai. It takes in 20 million data points from public platforms including Google, Facebook, Twitter and YouTube in the U.S. and then analyzes the information to create predictions. 
+The AI system was created in 2004, so it has been getting smarter all the time. It had already correctly predicted the results of the Democrat and Republican Primaries. Image Credit: Robyn Beck/AFP/Getty Images 
+“If Trump loses, it will defy the data trend for the first time in the last 12 years since Internet engagement began in full earnest,” Rai wrote in a report, according to CNBC . 
+However, before Trump supporters get too excited about the AI prediction, even Rai admits the social media-focused data model isn’t perfect. Even if Trump is getting more social engagement than Obama in 2008, that certainly doesn’t mean all those social media users will be voting for him. He explained it to CNBC like this: 
+Rai said that his system would be improved by more granular data. He said that If Google was to give him access to the unique internet addresses assigned to each digital device, then he could collect data on exactly what people were thinking. For example, Rai said if someone was searching for a YouTube video on how to vote, then looked for a video on how to vote for Trump, this could give the AI a good idea of the voter's intention. He added that there would be no privacy concerns as these internet addresses would be anonymized. 
+That being said, Rai advised the Clinton campaign not to get complacent in light of the AI's prediction. ",1

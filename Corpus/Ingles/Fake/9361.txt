@@ -1,0 +1,4 @@
+18876,,Keltner Channel Surf,"Technical explanations are out of favor, so here’s an educated guess:
+I believe there were a number of institutional rebalancing programs today designed, in mild risk-off fashion, to move monies away from small caps and post-AAPL NASDAQ, without appreciably changing overall equity allocations.    (The Dow, best performing today, also had the highest relative volume amongst the indices).
+This would explain how the Dow could hover slightly green even as the Russell was suddenly smashed below a key weekly level, down > 1.25%, then only meekly recover, while all other indices easily achieved the standard late-day VWAP comeback.   
+Even so, those hoping recent RUT upside difficulties portends a more pronounced, generalized risk-off market are holding, though firmly, to only the thinnest of tea leaves, waiting for a stronger brew …",1

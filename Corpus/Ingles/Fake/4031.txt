@@ -1,0 +1,14 @@
+8206,Yandex Email Account Proves DNC Hacker Was NOT Russian - Jeffrey Carr,nan,"Taming the corporate media beast Yandex Email Account Proves DNC Hacker Was NOT Russian 
+Or, who in Russian intelligence doesn’t dpeak Russian? Originally appeared at Medium.com 
+On March 22, 2016 William “Billy” Rhinehart, a regional field director at the Democratic National Committee, received an email from Google warning him that someone tried to access his account and that he should immediately change his password. He complied. 
+Unfortunately for Mr. Rhinehart, it wasn’t Google who sent him that email. He, along with many others, were a victim of Threat Group 4127 — the SecureWorks designation for Fancy Bear (CrowdStrike), APT28 (FireEye), and Sofacy (Kaspersky Lab). Secureworks assesses that TG 4127 “is operating from the Russian Federation and is gathering intelligence on behalf of the Russian government.” 
+Thanks to a bizarre twist involving Guccifer 2.0’s solicitation of a journalist at The Smoking Gun (TSG) to write about the DCLeaks emails in exchange for giving TSG an early look at some of the stolen documents, TSG was able to obtain the original spear phishing email directly from Billy Rhinehart and shared it with ThreatConnect, who posted this screenshot of the email’s headers and identified the actual sender of the email:hi.mymail@yandex.com. 1-ibuqqojl1spagetqb9oumq.png 
+What’s Wrong With This Picture? 
+Yandex is the Google of Russia. Like Google, Yandex is a search engine, and, like Gmail, Yandex‘s users can open a free email account. 
+When you visit Yandex.ru and create a new email account, the email assigned to you has the .ru domain. However, hi.mymail@yandex.com has a .com domain. There’s only one reason why something like that would happen, but first, here’s what a Russian user would see when he creates a Yandex email account on RUNET (the Russian Internet). 
+Step One: Pretend that you‘re in Russia 
+Secureworks says that you work on behalf of the Russian government. CrowdStrike says that you’re an employee of the Russian government. And everyone else believes that you’re Russian so for this little experiment to work, you need to be on the Russian Internet. 
+Assuming that you aren’t already in Russia, you’ll need to connect to a Russian proxy server. I have an account with PrivateVPN and used vpn-ru1.privatevpn.com for my test. 
+Once you’re connected, run a test to make sure that you’re on RUNET by visiting http://www.ip2location.com/ . It will show you your IP address and geolocation. 
+Step Two: Go to Yandex.ru 
+Type Yandex.ru into your browser’s address bar. You should see it resolve to https://yandex.ru/ .",1

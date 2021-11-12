@@ -1,0 +1,8 @@
+5495,US Prepares Device For Troops To Generate Electricity By Walking,Edmondo Burr,"Posted on October 26, 2016 by Edmondo Burr in Technology // 0 Comments The U.S. military is developing a device that could simultaneously take the load off of a soldier’s back and at the same time generate electricity. 
+Simply by walking soldiers could generate electricity that is needed to power an array of high-tech gadgets found in modern backpacks. 
+The bionic power knee harvester, also known as the PowerWalk, is an energy-harvesting device that is attached to both the upper and lower areas of both legs and generates power from movement. The device is still in development and field trials are due to begin in 2017. 
+The exoskeleton reduces the need of carrying heavy batteries. 
+Sputnik reports: 
+“ Just by walking, soldiers could generate power,” the Natick Soldier Research, Development and Engineering Center’s Project Engineer Noel Soto said in the release. “We are converting the movement of the knees when you walk into useful power. “ 
+“The goal is to reduce the amount of batteries used by soldiers, or to be able to extend the mission with the same load,” Soto noted. “Soldiers are carrying a heavy load and a lot of that weight, 16 to 20 pounds for a 72-hour mission, is due to batteries.” 
+Soldiers now carry multiple electronic devices that aid in strategy, communication and navigation, including computers, radios, mobile phones, battlefield situational displays and navigation tools, according to the release.",1

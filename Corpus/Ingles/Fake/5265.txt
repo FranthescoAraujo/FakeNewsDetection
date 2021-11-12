@@ -1,0 +1,14 @@
+10601,"Here’s How Hackers Stole 50,000 of John Podesta’s Emails",Brian Thomas,"Pinterest 
+New evidence appears to detail how earlier this year, hackers stole more than 50,000 emails from Hilary Clinton’s Campaign Chairman, John Podesta. 
+Labeled by the Clinton campaign as an attack by Russians to disrupt the US election, it seems the hack was the result of a bogus password reset scheme. 
+NYPost reports: 
+The hackers sent John Podesta an official-looking email on Saturday, March 19, that appeared to come from Google. It warned that someone in Ukraine had obtained Podesta’s personal Gmail password and tried unsuccessfully to log in, and it directed him to a website where he should “change your password immediately.” 
+Podesta’s chief of staff, Sara Latham, forwarded the email to the operations help desk of Clinton’s campaign, where staffer Charles Delavan in Brooklyn, New York, wrote back 25 minutes later, “This is a legitimate email. John needs to change his password immediately.” 
+But that “legitimate” email, wasn’t so authentic. 
+They were later leaked to WikiLeaks, and are being put on public display one email dump at a time. 
+NYPost continues: 
+The link to the website where Podesta was encouraged to change his Gmail password actually directed him instead to a computer in the Netherlands with a web address associated with Tokelau, a territory of New Zealand located in the South Pacific. The hackers carefully disguised the link using a service that shortens lengthy online addresses. But even for anyone checking more diligently, the address — “ google.com-securitysettingpage ” — was crafted to appear genuine. 
+[…] It is not immediately clear how Podesta responded to the threat, but five months later hackers successfully downloaded tens of thousands of emails from Podesta’s accounts that have now been posted online. The Clinton campaign declined to discuss the incident. Podesta has previously confirmed his emails were hacked and said the FBI was investigating 
+Clinton staffers should be more careful about what is a legitimate link and what is not. 
+And Hillary herself should be more careful about what she says in them. 
+For Hillary, nothing’s worse on public display than the truth.",1

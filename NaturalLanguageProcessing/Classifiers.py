@@ -21,7 +21,7 @@ class Classifiers:
             keras.layers.Dense(1, activation='sigmoid')
         ])
         model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
-        model.fit(self.x_train, self.y_train, epochs=10, validation_data=(self.x_test, self.y_test))
+        model.fit(self.x_train, self.y_train, epochs=10, validation_data=(self.x_test, self.y_test), verbose=0)
         y_pred = model.predict(self.x_test)
         y_pred = np.round(y_pred).astype(int)
         return y_pred
@@ -39,5 +39,14 @@ class Classifiers:
         return y_pred
 
     def longShortTermMemory(self):
-        pass
+        model = keras.Sequential([
+            keras.layers.Embedding(),
+            keras.layers.LSTM(100),
+            keras.layers.Dense(1, activation='sigmoid')
+        ])
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        model.fit(self.x_train, self.y_train, epochs=10, validation_data=(self.x_test, self.y_test))
+        y_pred = model.predict(self.x_test)
+        y_pred = np.round(y_pred).astype(int)
+        return y_pred
 
