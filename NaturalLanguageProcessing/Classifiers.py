@@ -40,7 +40,6 @@ class Classifiers:
 
     def longShortTermMemory(self):
         model = keras.Sequential([
-            keras.layers.Embedding(),
             keras.layers.LSTM(100),
             keras.layers.Dense(1, activation='sigmoid')
         ])

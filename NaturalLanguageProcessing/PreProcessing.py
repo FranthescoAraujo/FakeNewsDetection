@@ -16,7 +16,7 @@ class PreProcessing:
         import re
         returnValue = []
         for document in documents:
-            returnValue.append(re.sub('[^A-Za-z0-9]+', ' ', document))
+            returnValue.append(re.sub('[^A-Za-z0-9\']+', ' ', document))
         return returnValue
         
     def removeNumerals(documents):

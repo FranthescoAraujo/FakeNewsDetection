@@ -1,4 +1,3 @@
-from gensim import models
 from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
 from TermFrequencyInverseDocumentFrequency import TermFrequencyInverseDocumentFrequency
@@ -14,8 +13,8 @@ from scikitplot.metrics import plot_confusion_matrix
 from matplotlib import pyplot as plt
 
 tic = time.time()
-CORPUS_PATH = "../Corpus/"
-#CORPUS_PATH = "../Teste/"
+CORPUS_PATH = "../Corpus/Portugues/"
+#CORPUS_PATH = "../Corpus/Ingles/"
 folders = os.listdir(CORPUS_PATH)
 listNews = []
 listLabel = []
@@ -42,12 +41,13 @@ print("Etapa 02 - Pré-processamento - " + str(toc) + " segundos")
 
 tic = time.time()
 # REPRESENTAÇÃO DOC2VEC
-doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
-listDoc2vecDM = doc2vec.paragraphVectorDistributedMemory(vector_size=300)
+# doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
+# listDoc2vecDM = doc2vec.paragraphVectorDistributedMemory(vector_size=300)
 # listDoc2vecDBOW = doc2vec.paragraphVectorDistributedBagOfWords()
 # listDoc2vecConcat = doc2vec.concatBothParagraphVectors()
 # REPRESENTAÇÃO WORD2VEC
-# word2vec = DocumentRepresentationWord2Vec(newlistNews)
+word2vec = DocumentRepresentationWord2Vec(newlistNews)
+listMatrixWord2VecSkipGram = word2vec.skipGramMatrixDocumentRepresentation()
 # listWord2VecSkipGram = word2vec.skipGramDocumentRepresentation()
 # listWord2VecCBOW = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=1)
 # REPRESENTAÇÃO TF-IDF
@@ -60,7 +60,7 @@ print("Etapa 03 - Processamento de Linguagem Natural - " + str(toc) + " segundos
 
 tic = time.time()
 npList = []
-for document in listDoc2vecDM:
+for document in listMatrixWord2VecSkipGram:
     npList.append(np.array(document))
 npListLabel = []
 for label in listLabel:
@@ -84,12 +84,12 @@ print("Etapa 06 - Redução de Dimensionalidade Utilizando PCA - " + str(toc) + 
 
 tic = time.time()
 classificador = Classifiers(X_train, y_train, X_test, y_test)
-y_pred = classificador.supportVectorMachine()
+y_pred = classificador.longShortTermMemory()
 toc = time.time() - tic
 print("Etapa 07 - Treinamento da Rede - " + str(toc) + " segundos")
 
 tic = time.time()
 plot_confusion_matrix(y_test, y_pred)
-plt.savefig('doc2vec - paragraphVectorDistributedMemorySupportVectorMachine300.png')
+plt.savefig('word2vec - LSTM.png')
 toc = time.time() - tic
 print("Etapa 08 - Plotando Matrix de Confusão - " + str(toc) + " segundos")

@@ -1,10 +1,1 @@
-5782,"How America's Elections Are Hacked, Missing Link Discovered",The European Union Times,"
-
-Black Box Voting, founded in 2003, performs nonpartisan investigative reporting on elections in an attempt to stop vote rigging.
-You may be wondering what the term “black box” means. A “black box” system is non-transparent; its functions are hidden from the public. Elections, of course, should not be black box systems.
-Here is a link to a free copy of the book, Black Box Voting HERE .
-Author Bev Harris became known for groundbreaking work on electronic voting machines, which can remove transparency of the vote count.
-With voting machines, all political power can be converted to the hands of a few anonymous subcontractors:
-
-Source 
-",1
+, "Russia, India discuss FGFA advanced fighter, Su-30MKI upgrade",Sputnik,"Russia, India discuss FGFA advanced fighter, Su-30MKI upgrade 27 October 2016 Sputnik The India-Russia intergovernmental commission on military and technical cooperation held a meeting in New Delhi. Facebook shoigu , fgfa , su-30mki  Indian and Russian defence delegations discussed joint defence projects and defence issues of mutual interest, in particular, the Sukhoi/HAL Fifth Generation Fighter Aircraft (FGFA) and the upgrade of the Sukhoi Su-30MKI fighter, the sources at the Indian Defence Ministry sources told Sputnik. On Wednesday, the India-Russia intergovernmental commission on military and technical cooperation held a meeting in New Delhi, bringing together the delegations headed by Russian Defence Minister Sergei Shoigu and his Indian counterpart Manohar Parrikar.  ""We discussed… the FGFA project and [upgrade] of SU-30MKI which is presently India's priority,"" the sources said on Wednesday.  The Russian-Indian FGFA has stealth capabilities and is based on the Russian T-50 prototype jet. The FGFA project came about following the signing of a Russian-Indian cooperation agreement on October 18, 2007.  First published by Sputnik .",1

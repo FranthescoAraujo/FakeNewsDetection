@@ -1,15 +1,1 @@
-14798,Accurate AI Machine Predicts Trump Presidency,Edmondo Burr,"  Edmondo Burr in Technology // 0 Comments An artificially intelligent machine that predicted the outcomes of the last three U.S. presidential elections says Republican candidate Donald Trump is imminent to win. 
-MogAI, an artificial intelligence (AI) system created in 2004 by Sanjiv Rai, founder of Indian startup Genic.ai correctly predicted the results of the Republican and Democratic Primaries. 
-“ If Trump loses, it will defy the data trend for the first time in the last 12 years, ” Raj told CNBC. 
-The AI machine uses 20 million data sources from places like Google, Facebook, Twitter and YouTube to make its decisions. 
-The Daily Express reports: 
-From analysing engagement on social media platforms and search results, the machine believes that Mr Trump has overtaken Mr Obama’s engagement numbers in 2008 – when the Democrat first came into power and his popularity was at its peak. 
-Mr Rai says that the AI system has shown which candidate will win an election just by looking at engagement data. 
-He told CNBC: “If Trump loses, it will defy the data trend for the first time in the last 12 years since Internet engagement began in full earnest.” 
-Despite Democratic nominee Hillary Clinton being ahead in most polls, Mr Rai says this data should remind her not to get complacent. 
-However, the businessman does say that there are limitations in what can be achieved by MogAI. 
-Mr Rai explains that just because someone engages with a tweet, for example, it doesn’t necessarily mean that they support him. 
-Furthermore, there are now more people on social media than in the last three elections for which MogAI was about, meaning that there could be more negative engagements which the machine would struggle to distinguish. 
-Mr Rai said: “If you look at the primaries, in the primaries, there were immense amount of negative conversations that happen with regards to Trump. 
-“However, when these conversations started picking up pace, in the final days, it meant a huge game opening for Trump and he won the Primaries with a good margin.” 
-Billionaire Mr Trump is now facing an uphill battle in his bid to become President of the US after a string of controversies dented his bid to beat Mrs Clinton in the race to the White House.",1
+, ,Darth,"(Starcraft) Hell, it’s about time.",1

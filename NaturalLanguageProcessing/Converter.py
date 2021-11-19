@@ -4,16 +4,26 @@ CORPUS_PATH = "../Corpus/"
 f = open(CORPUS_PATH + "train.csv", "r")
 corpus = f.read()
 documentNumber = 0
-previousLetter = ""
 corpusList = []
 text = ""
+title = ""
+aux = False
 for letter in corpus:
-    if(previousLetter + letter) == ("\n" + str(documentNumber)[0]):
-        corpusList.append(text.strip())
-        text = ""
-        documentNumber += 1
-    text += letter
-    previousLetter = letter
+    if letter == "\n" or aux:
+        aux = True
+        title += letter
+        if (letter.isdigit()) or (letter == "\n"):
+            continue
+        if title[1:-1] == str(documentNumber):
+            corpusList.append(text.strip())
+            text = ""
+            title = ""
+            documentNumber += 1
+        else:
+            aux = False
+            text += " "
+            title = ""
+    text += letter   
 
 corpusListTrue = []
 corpusListFake = []
