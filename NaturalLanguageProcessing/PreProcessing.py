@@ -1,6 +1,6 @@
 import json
 
-class PreProcessing:    
+class PreProcessing:
     def toLowerCase(documents):
         returnValue = []
         for document in documents:
@@ -32,15 +32,19 @@ class PreProcessing:
         return returnValue
 
     def removeStopWords(documents, portugues = True):
-        returnValue = []
         if portugues:
-            f = open('StopWordsPortugues.json')
-            data = json.load(f)
-            words = data['words']
-            for document in documents:
-                text = ""
-                for word in document.split():
-                    if word not in words:
-                        text += word + " "
-                returnValue.append(text)
-            return returnValue
+            return PreProcessing.__remove("StopWordsPortugues.json", documents)
+        return PreProcessing.__remove("StopWordsIngles.json", documents)
+        
+    def __remove(jsonFile, documents):
+        returnValue = []
+        f = open(jsonFile)
+        data = json.load(f)
+        words = data['words']
+        for document in documents:
+            text = ""
+            for word in document.split():
+                if word not in words:
+                    text += word + " "
+            returnValue.append(text)
+        return returnValue

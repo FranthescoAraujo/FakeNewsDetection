@@ -110,7 +110,7 @@ class Classifiers:
             xTrain, xValidation = self.xTrain[train_index], self.xTrain[validation_index]
             yTrain, yValidation = self.yTrain[train_index], self.yTrain[validation_index]
             classifier.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
-            classifier.fit(xTrain, yTrain, epochs=10, validation_data=(xValidation, yValidation), callbacks=[callback])
+            classifier.fit(xTrain, yTrain, epochs=10, validation_data=(xValidation, yValidation), callbacks=[callback], verbose=0)
             yPred = classifier.predict(self.xTest)
             pred_proba = yPred
             yPred = np.round(yPred).astype(int)

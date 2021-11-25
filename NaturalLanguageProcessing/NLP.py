@@ -8,8 +8,7 @@ from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec
 from Classifiers import Classifiers
 
 datasetPortugues = True
-removeStopWords = True
-portugues = True
+removeStopWords = False
 
 tic = time.time()
 CORPUS_PATH = "../Corpus/Ingles/"
@@ -38,7 +37,7 @@ newlistNews = PreProcessing.removeSpecialCharacters(newlistNews)
 newlistNews = PreProcessing.removeNumerals(newlistNews)
 newlistNews = PreProcessing.toLowerCase(newlistNews)
 if removeStopWords:
-    newlistNews = PreProcessing.removeStopWords(newlistNews, portugues)
+    newlistNews = PreProcessing.removeStopWords(newlistNews, datasetPortugues)
 
 toc = time.time() - tic
 print("Etapa 02 - Pré-processamento - " + str(round(toc,2)) + " segundos")
@@ -64,6 +63,6 @@ print("Etapa 03 - Processamento de Linguagem Natural - " + str(round(toc,2)) + "
 
 tic = time.time()
 classificador = Classifiers(listVectors, listLabels)
-classificador.neuralNetwork(input_size=300)
+classificador.naiveBayes(vectorSize=300)
 toc = time.time() - tic
 print("Etapa 04 - Treinamento da Rede - " + str(round(toc,2)) + " segundos")
