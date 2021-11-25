@@ -44,7 +44,7 @@ class DocumentRepresentationWord2Vec:
             returnValue.append(numpy.divide(documentRepresentation,numWords).tolist())
         return returnValue
     
-    def skipGramMatrixDocumentRepresentation(self, window_size = 10, vector_size = 100, meanSumOrConcat = 0, matrix_size = 100):
+    def skipGramMatrixDocumentRepresentation(self, window_size = 10, vector_size = 100, matrix_size = 100):
         model = Word2Vec(sentences=self.documents, vector_size=vector_size, window=window_size, workers=4, sg=1, min_count=1).wv
         returnValue = []
         for document in self.documents:
@@ -57,7 +57,7 @@ class DocumentRepresentationWord2Vec:
                 documentRepresentation[index] = model[word]
         return returnValue
     
-    def continuousBagOfWordsMatrixDocumentRepresentation(self, window_size = 10, vector_size = 100, meanSumOrConcat = 0, matrix_size = 100):
+    def continuousBagOfWordsMatrixDocumentRepresentation(self, window_size = 10, vector_size = 100, matrix_size = 100):
         model = Word2Vec(sentences=self.documents, vector_size=vector_size, window=window_size, workers=4, sg=0, min_count=1).wv
         returnValue = []
         for document in self.documents:

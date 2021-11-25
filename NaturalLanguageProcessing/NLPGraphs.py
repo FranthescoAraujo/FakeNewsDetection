@@ -1,3 +1,4 @@
+import sklearn
 from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
 from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec

@@ -1,3 +1,5 @@
+import json
+
 class PreProcessing:    
     def toLowerCase(documents):
         returnValue = []
@@ -28,12 +30,17 @@ class PreProcessing:
                     text += word
             returnValue.append(text)
         return returnValue
-        
-    def toSplit(documents):
-        returnValue = []
-        for document in documents:
-            returnValue.append(document.split())
-        return returnValue
 
-    def removeStopWords(stopWords):
-        pass
+    def removeStopWords(documents, portugues = True):
+        returnValue = []
+        if portugues:
+            f = open('StopWordsPortugues.json')
+            data = json.load(f)
+            words = data['words']
+            for document in documents:
+                text = ""
+                for word in document.split():
+                    if word not in words:
+                        text += word + " "
+                returnValue.append(text)
+            return returnValue
