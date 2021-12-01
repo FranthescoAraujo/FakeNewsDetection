@@ -31,8 +31,8 @@ class PreProcessing:
             returnValue.append(text)
         return returnValue
 
-    def removeStopWords(documents, portugues = True):
-        if portugues:
+    def removeStopWords(documents, dataset = "portugues"):
+        if dataset == "portugues":
             return PreProcessing.__remove("StopWordsPortugues.json", documents)
         return PreProcessing.__remove("StopWordsIngles.json", documents)
         
@@ -47,4 +47,10 @@ class PreProcessing:
                 if word not in words:
                     text += word + " "
             returnValue.append(text)
+        return returnValue
+
+    def toSplit(documents):
+        returnValue = []
+        for document in documents:
+            returnValue.append(document.split())
         return returnValue

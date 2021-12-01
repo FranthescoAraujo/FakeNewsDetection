@@ -14,17 +14,18 @@ class Classifiers:
     xTest = []
     yTrain = []
     yTest = []
+    metrics = {"accuracy":[], "precision":[], "recall":[], "AUC":[]}
     def __init__(self, listVectors, listLabels, foldsNumber = 5):
         self.foldsNumber = foldsNumber
         self.xTrain, self.xTest, self.yTrain, self.yTest = train_test_split(np.array(listVectors), np.array(listLabels), test_size=0.3, random_state=42)
 
     def supportVectorMachine(self, vectorSize):
         svm = SVC(C=1, probability=True ,random_state=42)
-        self.__crossValidationSklearn(svm, vectorSize, "Support Vector Machine")
+        return self.__crossValidationSklearn(svm, vectorSize, "Support Vector Machine")
 
     def naiveBayes(self, vectorSize):
         nb = GaussianNB()
-        self.__crossValidationSklearn(nb, vectorSize, "Naive Bayes")
+        return self.__crossValidationSklearn(nb, vectorSize, "Naive Bayes")
 
     def neuralNetwork(self, input_size = 100, hidden_layer = 100):
         callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
@@ -33,7 +34,7 @@ class Classifiers:
             keras.layers.Dense(hidden_layer, activation='relu'),
             keras.layers.Dense(1, activation='sigmoid')
         ])
-        self.__crossValidationTensorflow(model, input_size, "Neural Network", callback)
+        return self.__crossValidationTensorflow(model, input_size, "Neural Network", callback)
 
     def longShortTermMemory(self, lstm_size = 100,  vector_size = 100, matrix_size = 100, isTransposed = False):
         if (isTransposed):
@@ -43,13 +44,13 @@ class Classifiers:
             ])
             self.xTrain = np.transpose(self.xTrain, (0,2,1))
             self.xTest = np.transpose(self.xTest, (0,2,1))
-            self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory Transposed - Matrix Size = " + str(matrix_size) + " ")
+            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory Transposed - Matrix Size = " + str(matrix_size) + " ")
         else:
             model = keras.Sequential([
                 keras.layers.LSTM(lstm_size, input_shape=(matrix_size, vector_size)),
                 keras.layers.Dense(1, activation='sigmoid')
             ])
-            self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory - Matrix Size = " + str(matrix_size) + " ")
+            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory - Matrix Size = " + str(matrix_size) + " ")
         
     def __crossValidationSklearn(self, classifier, vectorSize, classifierName):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
@@ -60,6 +61,7 @@ class Classifiers:
         precisionList = []
         recallList = []
         accuracyList = []
+        AUCList = []
         x, y = 0, 1
         for i, (train_index, validation_index) in enumerate(k_fold.split(self.xTrain)):
             xTrain, xValidation = self.xTrain[train_index], self.xTrain[validation_index]
@@ -79,6 +81,7 @@ class Classifiers:
             axes[0, 0].step(recall, precision, label=lab)
             y_real.append(self.yTest)
             y_proba.append(pred_proba[:,1])
+            AUCList.append(auc(recall, precision))
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
@@ -95,6 +98,15 @@ class Classifiers:
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
         f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
+        self.metrics["accuracy"].append(str(round(np.mean(accuracyList),4)))
+        self.metrics["accuracy"].append(str(round(np.std(accuracyList),4)))
+        self.metrics["precision"].append(str(round(np.mean(precisionList),4)))
+        self.metrics["precision"].append(str(round(np.std(precisionList),4)))
+        self.metrics["recall"].append(str(round(np.mean(recallList),4)))
+        self.metrics["recall"].append(str(round(np.std(recallList),4)))
+        self.metrics["AUC"].append(str(round(np.mean(AUCList),4)))
+        self.metrics["AUC"].append(str(round(np.std(AUCList),4)))
+        return self.metrics
     
     def __crossValidationTensorflow(self, classifier, vectorSize, classifierName, callback):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
@@ -105,6 +117,7 @@ class Classifiers:
         precisionList = []
         recallList = []
         accuracyList = []
+        AUCList = []
         x, y = 0, 1
         for i, (train_index, validation_index) in enumerate(k_fold.split(self.xTrain)):
             xTrain, xValidation = self.xTrain[train_index], self.xTrain[validation_index]
@@ -125,6 +138,7 @@ class Classifiers:
             axes[0, 0].step(recall, precision, label=lab)
             y_real.append(self.yTest)
             y_proba.append(pred_proba)
+            AUCList.append(auc(recall, precision))
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
@@ -141,3 +155,12 @@ class Classifiers:
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
         f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
+        self.metrics["accuracy"].append(str(round(np.mean(accuracyList),4)))
+        self.metrics["accuracy"].append(str(round(np.std(accuracyList),4)))
+        self.metrics["precision"].append(str(round(np.mean(precisionList),4)))
+        self.metrics["precision"].append(str(round(np.std(precisionList),4)))
+        self.metrics["recall"].append(str(round(np.mean(recallList),4)))
+        self.metrics["recall"].append(str(round(np.std(recallList),4)))
+        self.metrics["AUC"].append(str(round(np.mean(AUCList),4)))
+        self.metrics["AUC"].append(str(round(np.std(AUCList),4)))
+        return self.metrics

@@ -7,8 +7,8 @@ from TermFrequencyInverseDocumentFrequency import TermFrequencyInverseDocumentFr
 from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec
 from Classifiers import Classifiers
 
-datasetPortugues = True
-removeStopWords = False
+datasetPortugues = False
+removeStopWords = True
 
 tic = time.time()
 CORPUS_PATH = "../Corpus/Ingles/"
@@ -63,6 +63,6 @@ print("Etapa 03 - Processamento de Linguagem Natural - " + str(round(toc,2)) + "
 
 tic = time.time()
 classificador = Classifiers(listVectors, listLabels)
-classificador.naiveBayes(vectorSize=300)
+classificador.neuralNetwork(input_size=300)
 toc = time.time() - tic
 print("Etapa 04 - Treinamento da Rede - " + str(round(toc,2)) + " segundos")

@@ -1,0 +1,5 @@
+01/12/2021 21:17:05 - Carregando dataset português - 13.47 segundos
+ 01/12/2021 21:17:14 - Pré-processamento - removeStopWords = False - 8.91 segundos
+  01/12/2021 21:18:29 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 75.53 segundos
+    01/12/2021 21:18:41 - Classificação - SVM - 11.68 segundos
+    01/12/2021 21:18:42 - Classificação - Naive Bayes - 1.39 segundos
