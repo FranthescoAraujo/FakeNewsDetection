@@ -10,14 +10,10 @@ from warnings import filterwarnings
 filterwarnings("ignore", category=FutureWarning)
 
 class Classifiers:
-    xTrain = []
-    xTest = []
-    yTrain = []
-    yTest = []
-    metrics = {"accuracy":[], "precision":[], "recall":[], "AUC":[]}
     def __init__(self, listVectors, listLabels, foldsNumber = 5):
         self.foldsNumber = foldsNumber
         self.xTrain, self.xTest, self.yTrain, self.yTest = train_test_split(np.array(listVectors), np.array(listLabels), test_size=0.3, random_state=42)
+        self.metrics = {"accuracy":[], "precision":[], "recall":[], "AUC":[]}
 
     def supportVectorMachine(self, vectorSize):
         svm = SVC(C=1, probability=True ,random_state=42)
@@ -37,6 +33,7 @@ class Classifiers:
         return self.__crossValidationTensorflow(model, input_size, "Neural Network", callback)
 
     def longShortTermMemory(self, lstm_size = 100,  vector_size = 100, matrix_size = 100, isTransposed = False):
+        callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
         if (isTransposed):
             model = keras.Sequential([
             keras.layers.LSTM(lstm_size, input_shape=(vector_size, matrix_size)),
@@ -44,13 +41,13 @@ class Classifiers:
             ])
             self.xTrain = np.transpose(self.xTrain, (0,2,1))
             self.xTest = np.transpose(self.xTest, (0,2,1))
-            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory Transposed - Matrix Size = " + str(matrix_size) + " ")
+            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory Transposed - Matrix Size = " + str(matrix_size) + " ", callback)
         else:
             model = keras.Sequential([
                 keras.layers.LSTM(lstm_size, input_shape=(matrix_size, vector_size)),
                 keras.layers.Dense(1, activation='sigmoid')
             ])
-            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory - Matrix Size = " + str(matrix_size) + " ")
+            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory - Matrix Size = " + str(matrix_size) + " ", callback)
         
     def __crossValidationSklearn(self, classifier, vectorSize, classifierName):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))

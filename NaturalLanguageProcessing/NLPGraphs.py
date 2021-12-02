@@ -11,22 +11,15 @@ from datetime import datetime
 def tempoAgora():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-# dataSetCsv = ["português", "inglês"]
-# removeStopWordsCsv = [True, False]
-# naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
-#                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
-#                                 "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix"]
-# vectorSizeCsv = [100, 200, 300]
-# classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM - Transposed"]
-# classifierSize = [10, 50, 100]
-
-dataSetCsv = ["português"]
-removeStopWordsCsv = [False]
-naturalLanguageProcessingCsv = ["Doc2vec - PV-DM"]
-vectorSizeCsv = [100]
-classifierCsv = ["SVM", "Naive Bayes"]
-classifierSizeCsv = [10]
-matrixSizeCsv = [10]
+dataSetCsv = ["português", "inglês"]
+removeStopWordsCsv = [True, False]
+naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
+                                "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
+                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix"]
+vectorSizeCsv = [100, 200, 300]
+classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM - Transposed"]
+classifierSizeCsv = [10, 50, 100]
+matrixSizeCsv = [10, 50, 100]
 
 csvFile = open("results/results.csv", "w")
 results = csv.writer(csvFile)
@@ -93,17 +86,49 @@ for dataset in dataSetCsv:
                     word2vec = DocumentRepresentationWord2Vec(newlistNews)
                     listVectors = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
                 if (nlp == "Word2vec - Skipgram - Matrix"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.skipGramMatrixDocumentRepresentation(vector_size=vectorSize)
+                    for classifier in classifierCsv:
+                        if classifier == "LSTM" or classifier == "LSTM - Transposed":
+                            for matrixSize in matrixSizeCsv:
+                                word2vec = DocumentRepresentationWord2Vec(newlistNews)
+                                listVectors = word2vec.skipGramMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
+                                toc = time.time() - tic
+                                log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
+                                print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
+                                for classifierSize in classifierSizeCsv:
+                                    tic = time.time()
+                                    classificador = Classifiers(listVectors, listLabels)
+                                    classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
+                                    results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
+                                    toc = time.time() - tic
+                                    log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
+                                    print("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
+
+                    continue
                 if (nlp == "Word2vec - CBOW - Matrix"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.continuousBagOfWordsMatrixDocumentRepresentation(vector_size=vectorSize)
+                    for classifier in classifierCsv:
+                        if classifier == "LSTM" or classifier == "LSTM - Transposed":
+                            for matrixSize in matrixSizeCsv:
+                                word2vec = DocumentRepresentationWord2Vec(newlistNews)
+                                listVectors = word2vec.continuousBagOfWordsMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
+                                toc = time.time() - tic
+                                log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
+                                print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
+                                for classifierSize in classifierSizeCsv:
+                                    tic = time.time()
+                                    classificador = Classifiers(listVectors, listLabels)
+                                    classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
+                                    results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
+                                    toc = time.time() - tic
+                                    log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
+                                    print("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
+                                    
+                    continue
                 toc = time.time() - tic
                 log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - " + str(round(toc,2)) + " segundos\n")
                 print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - " + str(round(toc,2)) + " segundos")
 
                 for classifier in classifierCsv:
-                    if classifier == "SVM" and not (nlp == "Word2vec - Skipgram - Matrix" or nlp == "Word2vec - CBOW - Matrix"):
+                    if classifier == "SVM":
                         tic = time.time()
                         classificador = Classifiers(listVectors, listLabels)
                         metrics = classificador.supportVectorMachine(vectorSize=vectorSize)
@@ -112,7 +137,7 @@ for dataset in dataSetCsv:
                         log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos\n")
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
 
-                    if classifier == "Naive Bayes" and not (nlp == "Word2vec - Skipgram - Matrix" or nlp == "Word2vec - CBOW - Matrix"):
+                    if classifier == "Naive Bayes":
                         tic = time.time()
                         classificador = Classifiers(listVectors, listLabels)
                         metrics = classificador.naiveBayes(vectorSize=vectorSize)
@@ -121,7 +146,7 @@ for dataset in dataSetCsv:
                         log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos\n")
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
 
-                    if classifier == "RNA" and not (nlp == "Word2vec - Skipgram - Matrix" or nlp == "Word2vec - CBOW - Matrix"):
+                    if classifier == "RNA":
                         for classifierSize in classifierSizeCsv:
                             tic = time.time()
                             classificador = Classifiers(listVectors, listLabels)
@@ -130,28 +155,6 @@ for dataset in dataSetCsv:
                             toc = time.time() - tic
                             log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - " + str(round(toc,2)) + " segundos\n")
                             print("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - " + str(round(toc,2)) + " segundos")
-
-                    if classifier == "LSTM" and (nlp == "Word2vec - Skipgram - Matrix" or nlp == "Word2vec - CBOW - Matrix"):
-                        for classifierSize in classifierSizeCsv:
-                            for matrixSize in matrixSizeCsv:
-                                tic = time.time()
-                                classificador = Classifiers(listVectors, listLabels)
-                                classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
-                                results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
-                                toc = time.time() - tic
-                                log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
-                                print("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
-
-                    if classifier == "LSTM - Transposed" and (nlp == "Word2vec - Skipgram - Matrix" or nlp == "Word2vec - CBOW - Matrix"):
-                        for classifierSize in classifierSizeCsv:
-                            for matrixSize in matrixSizeCsv:
-                                tic = time.time()
-                                classificador = Classifiers(listVectors, listLabels)
-                                classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
-                                results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
-                                toc = time.time() - tic
-                                log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
-                                print("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
 
 csvFile.close()
 log.close()

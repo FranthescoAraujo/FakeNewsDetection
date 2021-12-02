@@ -3,8 +3,6 @@ from gensim.models.word2vec import Word2Vec
 import numpy
 
 class DocumentRepresentationWord2Vec:
-    documents = []
-
     def __init__(self, documents):
         self.documents = PreProcessing.toSplit(documents)
 

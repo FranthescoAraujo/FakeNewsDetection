@@ -63,6 +63,6 @@ print("Etapa 03 - Processamento de Linguagem Natural - " + str(round(toc,2)) + "
 
 tic = time.time()
 classificador = Classifiers(listVectors, listLabels)
-classificador.neuralNetwork(input_size=300)
+classificador.longShortTermMemory(input_size=300)
 toc = time.time() - tic
 print("Etapa 04 - Treinamento da Rede - " + str(round(toc,2)) + " segundos")
