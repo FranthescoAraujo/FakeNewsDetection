@@ -13,7 +13,7 @@ class Classifiers:
     def __init__(self, listVectors, listLabels, foldsNumber = 5):
         self.foldsNumber = foldsNumber
         self.xTrain, self.xTest, self.yTrain, self.yTest = train_test_split(np.array(listVectors), np.array(listLabels), test_size=0.3, random_state=42)
-        self.metrics = {"accuracy":[], "precision":[], "recall":[], "AUC":[]}
+        self.metrics = {"accuracy":[0, 0], "precision":[0, 0], "recall":[0, 0], "AUC":[0, 0]}
 
     def supportVectorMachine(self, vectorSize):
         svm = SVC(C=1, probability=True ,random_state=42)
@@ -95,14 +95,14 @@ class Classifiers:
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
         f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
-        self.metrics["accuracy"].append(str(round(np.mean(accuracyList),4)))
-        self.metrics["accuracy"].append(str(round(np.std(accuracyList),4)))
-        self.metrics["precision"].append(str(round(np.mean(precisionList),4)))
-        self.metrics["precision"].append(str(round(np.std(precisionList),4)))
-        self.metrics["recall"].append(str(round(np.mean(recallList),4)))
-        self.metrics["recall"].append(str(round(np.std(recallList),4)))
-        self.metrics["AUC"].append(str(round(np.mean(AUCList),4)))
-        self.metrics["AUC"].append(str(round(np.std(AUCList),4)))
+        self.metrics["accuracy"][0] = str(round(np.mean(accuracyList),4))
+        self.metrics["accuracy"][1] = str(round(np.std(accuracyList),4))
+        self.metrics["precision"][0] = str(round(np.mean(precisionList),4))
+        self.metrics["precision"][1] = str(round(np.std(precisionList),4))
+        self.metrics["recall"][0] = str(round(np.mean(recallList),4))
+        self.metrics["recall"][1] = str(round(np.std(recallList),4))
+        self.metrics["AUC"][0] = str(round(np.mean(AUCList),4))
+        self.metrics["AUC"][1] = str(round(np.std(AUCList),4))
         return self.metrics
     
     def __crossValidationTensorflow(self, classifier, vectorSize, classifierName, callback):
@@ -152,12 +152,12 @@ class Classifiers:
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
         f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
-        self.metrics["accuracy"].append(str(round(np.mean(accuracyList),4)))
-        self.metrics["accuracy"].append(str(round(np.std(accuracyList),4)))
-        self.metrics["precision"].append(str(round(np.mean(precisionList),4)))
-        self.metrics["precision"].append(str(round(np.std(precisionList),4)))
-        self.metrics["recall"].append(str(round(np.mean(recallList),4)))
-        self.metrics["recall"].append(str(round(np.std(recallList),4)))
-        self.metrics["AUC"].append(str(round(np.mean(AUCList),4)))
-        self.metrics["AUC"].append(str(round(np.std(AUCList),4)))
+        self.metrics["accuracy"][0] = str(round(np.mean(accuracyList),4))
+        self.metrics["accuracy"][1] = str(round(np.std(accuracyList),4))
+        self.metrics["precision"][0] = str(round(np.mean(precisionList),4))
+        self.metrics["precision"][1] = str(round(np.std(precisionList),4))
+        self.metrics["recall"][0] = str(round(np.mean(recallList),4))
+        self.metrics["recall"][1] = str(round(np.std(recallList),4))
+        self.metrics["AUC"][0] = str(round(np.mean(AUCList),4))
+        self.metrics["AUC"][1] = str(round(np.std(AUCList),4))
         return self.metrics

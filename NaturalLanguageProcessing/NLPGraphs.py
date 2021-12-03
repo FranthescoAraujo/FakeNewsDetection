@@ -97,7 +97,7 @@ for dataset in dataSetCsv:
                                 for classifierSize in classifierSizeCsv:
                                     tic = time.time()
                                     classificador = Classifiers(listVectors, listLabels)
-                                    classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
+                                    metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
                                     results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                                     toc = time.time() - tic
                                     log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
@@ -116,7 +116,7 @@ for dataset in dataSetCsv:
                                 for classifierSize in classifierSizeCsv:
                                     tic = time.time()
                                     classificador = Classifiers(listVectors, listLabels)
-                                    classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
+                                    metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
                                     results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                                     toc = time.time() - tic
                                     log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
@@ -150,7 +150,7 @@ for dataset in dataSetCsv:
                         for classifierSize in classifierSizeCsv:
                             tic = time.time()
                             classificador = Classifiers(listVectors, listLabels)
-                            classificador.neuralNetwork(input_size=vectorSize, hidden_layer=classifierSize)
+                            metrics = classificador.neuralNetwork(input_size=vectorSize, hidden_layer=classifierSize)
                             results.writerow([dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, "-", metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                             toc = time.time() - tic
                             log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - classifier size = " + str(classifierSize) + " - " + str(round(toc,2)) + " segundos\n")
