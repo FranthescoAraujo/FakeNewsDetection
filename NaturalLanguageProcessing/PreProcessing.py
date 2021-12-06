@@ -31,8 +31,8 @@ class PreProcessing:
             returnValue.append(text)
         return returnValue
 
-    def removeStopWords(documents, dataset = "portugues"):
-        if dataset == "portugues":
+    def removeStopWords(documents, dataset = "português"):
+        if dataset == "português":
             return PreProcessing.__remove("StopWordsPortugues.json", documents)
         return PreProcessing.__remove("StopWordsIngles.json", documents)
         

@@ -1,3 +1,4 @@
+from threading import local
 import matplotlib.pyplot as plt
 import tensorflow.keras as keras
 import numpy as np
@@ -14,6 +15,12 @@ class Classifiers:
         self.foldsNumber = foldsNumber
         self.xTrain, self.xTest, self.yTrain, self.yTest = train_test_split(np.array(listVectors), np.array(listLabels), test_size=0.3, random_state=42)
         self.metrics = {"accuracy":[0, 0], "precision":[0, 0], "recall":[0, 0], "AUC":[0, 0]}
+
+    def setTitle(self, title):
+        self.title = title
+    
+    def setLocalSave(self, localSave):
+        self.localSave = localSave
 
     def supportVectorMachine(self, vectorSize):
         svm = SVC(C=1, probability=True ,random_state=42)
@@ -51,7 +58,7 @@ class Classifiers:
         
     def __crossValidationSklearn(self, classifier, vectorSize, classifierName):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
-        plt.suptitle(classifierName + " - Vector Size = " + str(vectorSize), fontsize=16)
+        plt.suptitle(self.title, fontsize=10)
         k_fold = KFold(n_splits=self.foldsNumber, shuffle=True, random_state=42)
         y_real = []
         y_proba = []
@@ -82,9 +89,6 @@ class Classifiers:
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
-        axes[0, 1].set_title("Accuracy = " + str(round(np.mean(accuracyList),4)) + " ± " + str(round(np.std(accuracyList),4)) + " "
-                             "Precision = " + str(round(np.mean(precisionList),4)) + " ± " + str(round(np.std(precisionList),4)) + " "
-                             "Recall = " + str(round(np.mean(recallList),4)) + " ± " + str(round(np.std(recallList),4)))
         y_real = np.concatenate(y_real)
         y_proba = np.concatenate(y_proba)
         precision, recall, _ = precision_recall_curve(y_real, y_proba)
@@ -94,7 +98,8 @@ class Classifiers:
         axes[0, 0].set_ylabel('Precision')
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
-        f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
+        f.savefig(self.localSave + ".png")
+        plt.close(f)
         self.metrics["accuracy"][0] = str(round(np.mean(accuracyList),4))
         self.metrics["accuracy"][1] = str(round(np.std(accuracyList),4))
         self.metrics["precision"][0] = str(round(np.mean(precisionList),4))
@@ -107,7 +112,7 @@ class Classifiers:
     
     def __crossValidationTensorflow(self, classifier, vectorSize, classifierName, callback):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
-        plt.suptitle(classifierName + " - Vector Size = " + str(vectorSize), fontsize=16)
+        plt.suptitle(self.title, fontsize=10)
         k_fold = KFold(n_splits=self.foldsNumber, shuffle=True, random_state=42)
         y_real = []
         y_proba = []
@@ -139,9 +144,6 @@ class Classifiers:
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
-        axes[0, 1].set_title("Accuracy = " + str(round(np.mean(accuracyList),4)) + " ± " + str(round(np.std(accuracyList),4)) + " "
-                             "Precision = " + str(round(np.mean(precisionList),4)) + " ± " + str(round(np.std(precisionList),4)) + " "
-                             "Recall = " + str(round(np.mean(recallList),4)) + " ± " + str(round(np.std(recallList),4)))
         y_real = np.concatenate(y_real)
         y_proba = np.concatenate(y_proba)
         precision, recall, _ = precision_recall_curve(y_real, y_proba)
@@ -151,7 +153,8 @@ class Classifiers:
         axes[0, 0].set_ylabel('Precision')
         axes[0, 0].legend(loc='lower left', fontsize='small')
         f.tight_layout()
-        f.savefig("results/" + classifierName + " - Vector Size = " + str(vectorSize) + ".png")
+        f.savefig(self.localSave + ".png")
+        plt.close(f)
         self.metrics["accuracy"][0] = str(round(np.mean(accuracyList),4))
         self.metrics["accuracy"][1] = str(round(np.std(accuracyList),4))
         self.metrics["precision"][0] = str(round(np.mean(precisionList),4))

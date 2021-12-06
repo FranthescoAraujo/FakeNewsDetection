@@ -1,32 +1,346 @@
-02/12/2021 22:47:36 - Carregando dataset português - 15.03 segundos
- 02/12/2021 22:49:19 - Pré-processamento - removeStopWords = True - 103.08 segundos
-  02/12/2021 22:50:31 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 10 - 71.76 segundos
-    02/12/2021 22:50:37 - Classificação - SVM - 5.96 segundos
-  02/12/2021 22:50:53 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 10 - 16.24 segundos
-    02/12/2021 22:51:56 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 63.22 segundos
-    02/12/2021 22:52:49 - Classificação - LSTM - classifier size = 5 - matrix size = 10 - 53.28 segundos
-  02/12/2021 22:53:04 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 5 - 68.43 segundos
-    02/12/2021 22:53:56 - Classificação - LSTM - classifier size = 10 - matrix size = 5 - 51.49 segundos
-    02/12/2021 22:54:43 - Classificação - LSTM - classifier size = 5 - matrix size = 5 - 47.16 segundos
-  02/12/2021 22:54:58 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 10 - 62.27 segundos
-    02/12/2021 22:55:48 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 49.76 segundos
-    02/12/2021 22:56:37 - Classificação - LSTM - Transposed - classifier size = 5 - matrix size = 10 - 48.95 segundos
-  02/12/2021 22:56:52 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 5 - 64.15 segundos
-    02/12/2021 22:57:40 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 5 - 47.7 segundos
-    02/12/2021 22:58:30 - Classificação - LSTM - Transposed - classifier size = 5 - matrix size = 5 - 50.43 segundos
-02/12/2021 22:58:54 - Carregando dataset português - 24.14 segundos
- 02/12/2021 22:59:02 - Pré-processamento - removeStopWords = False - 7.79 segundos
-  02/12/2021 23:00:15 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 10 - 73.11 segundos
-    02/12/2021 23:00:20 - Classificação - SVM - 4.45 segundos
-  02/12/2021 23:00:38 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 10 - 18.16 segundos
-    02/12/2021 23:01:27 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 48.96 segundos
-    02/12/2021 23:02:17 - Classificação - LSTM - classifier size = 5 - matrix size = 10 - 49.72 segundos
-  02/12/2021 23:02:35 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 5 - 67.7 segundos
-    02/12/2021 23:03:25 - Classificação - LSTM - classifier size = 10 - matrix size = 5 - 50.61 segundos
-    02/12/2021 23:04:11 - Classificação - LSTM - classifier size = 5 - matrix size = 5 - 45.48 segundos
-  02/12/2021 23:04:29 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 10 - 63.65 segundos
-    02/12/2021 23:05:18 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 49.57 segundos
-    02/12/2021 23:06:08 - Classificação - LSTM - Transposed - classifier size = 5 - matrix size = 10 - 49.61 segundos
-  02/12/2021 23:06:26 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 10 - matrix size = 5 - 67.59 segundos
-    02/12/2021 23:07:15 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 5 - 49.14 segundos
-    02/12/2021 23:08:04 - Classificação - LSTM - Transposed - classifier size = 5 - matrix size = 5 - 48.39 segundos
+03/12/2021 02:50:59 - Carregando dataset português - 14.88 segundos
+ 03/12/2021 02:52:42 - Pré-processamento - removeStopWords = True - 103.43 segundos
+  03/12/2021 02:53:50 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 68.23 segundos
+    03/12/2021 02:54:02 - Classificação - SVM - 11.76 segundos
+    03/12/2021 02:54:04 - Classificação - Naive Bayes - 1.44 segundos
+    03/12/2021 02:54:29 - Classificação - RNA - classifier size = 10 - 25.19 segundos
+    03/12/2021 02:54:54 - Classificação - RNA - classifier size = 50 - 24.97 segundos
+    03/12/2021 02:55:19 - Classificação - RNA - classifier size = 100 - 25.14 segundos
+  03/12/2021 02:56:31 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 200 - 72.22 segundos
+    03/12/2021 02:56:53 - Classificação - SVM - 22.14 segundos
+    03/12/2021 02:56:55 - Classificação - Naive Bayes - 1.43 segundos
+    03/12/2021 02:57:21 - Classificação - RNA - classifier size = 10 - 26.36 segundos
+    03/12/2021 02:57:48 - Classificação - RNA - classifier size = 50 - 26.89 segundos
+    03/12/2021 02:58:16 - Classificação - RNA - classifier size = 100 - 28.15 segundos
+  03/12/2021 02:59:32 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 300 - 75.87 segundos
+    03/12/2021 02:59:56 - Classificação - SVM - 23.93 segundos
+    03/12/2021 02:59:58 - Classificação - Naive Bayes - 1.86 segundos
+    03/12/2021 03:00:24 - Classificação - RNA - classifier size = 10 - 26.43 segundos
+    03/12/2021 03:00:49 - Classificação - RNA - classifier size = 50 - 24.38 segundos
+    03/12/2021 03:01:12 - Classificação - RNA - classifier size = 100 - 23.37 segundos
+  03/12/2021 03:02:03 - Processamento de Linguagem Natural - Doc2vec - PV-DBOW - vector size = 100 - 50.8 segundos
+    03/12/2021 03:03:11 - Classificação - SVM - 68.17 segundos
+    03/12/2021 03:03:12 - Classificação - Naive Bayes - 1.33 segundos
+    03/12/2021 03:03:37 - Classificação - RNA - classifier size = 10 - 25.0 segundos
+    03/12/2021 03:04:02 - Classificação - RNA - classifier size = 50 - 25.21 segundos
+    03/12/2021 03:04:27 - Classificação - RNA - classifier size = 100 - 24.35 segundos
+  03/12/2021 03:05:16 - Processamento de Linguagem Natural - Doc2vec - PV-DBOW - vector size = 200 - 49.62 segundos
+    03/12/2021 03:06:38 - Classificação - SVM - 81.18 segundos
+    03/12/2021 03:06:39 - Classificação - Naive Bayes - 1.4 segundos
+    03/12/2021 03:06:58 - Classificação - RNA - classifier size = 10 - 19.03 segundos
+    03/12/2021 03:07:17 - Classificação - RNA - classifier size = 50 - 19.37 segundos
+    03/12/2021 03:07:37 - Classificação - RNA - classifier size = 100 - 19.35 segundos
+  03/12/2021 03:08:26 - Processamento de Linguagem Natural - Doc2vec - PV-DBOW - vector size = 300 - 49.37 segundos
+    03/12/2021 03:10:03 - Classificação - SVM - 97.09 segundos
+    03/12/2021 03:10:04 - Classificação - Naive Bayes - 1.24 segundos
+    03/12/2021 03:10:23 - Classificação - RNA - classifier size = 10 - 18.17 segundos
+    03/12/2021 03:10:41 - Classificação - RNA - classifier size = 50 - 18.71 segundos
+    03/12/2021 03:11:00 - Classificação - RNA - classifier size = 100 - 18.98 segundos
+  03/12/2021 03:12:46 - Processamento de Linguagem Natural - Doc2vec - Concatenated - vector size = 100 - 106.01 segundos
+    03/12/2021 03:12:53 - Classificação - SVM - 7.07 segundos
+    03/12/2021 03:12:55 - Classificação - Naive Bayes - 1.24 segundos
+    03/12/2021 03:13:12 - Classificação - RNA - classifier size = 10 - 17.24 segundos
+    03/12/2021 03:13:30 - Classificação - RNA - classifier size = 50 - 17.8 segundos
+    03/12/2021 03:13:47 - Classificação - RNA - classifier size = 100 - 17.46 segundos
+  03/12/2021 03:15:31 - Processamento de Linguagem Natural - Doc2vec - Concatenated - vector size = 200 - 103.56 segundos
+    03/12/2021 03:15:46 - Classificação - SVM - 15.08 segundos
+    03/12/2021 03:15:47 - Classificação - Naive Bayes - 0.98 segundos
+    03/12/2021 03:16:03 - Classificação - RNA - classifier size = 10 - 16.12 segundos
+    03/12/2021 03:16:20 - Classificação - RNA - classifier size = 50 - 16.84 segundos
+    03/12/2021 03:16:37 - Classificação - RNA - classifier size = 100 - 16.81 segundos
+  03/12/2021 03:18:32 - Processamento de Linguagem Natural - Doc2vec - Concatenated - vector size = 300 - 115.44 segundos
+    03/12/2021 03:18:50 - Classificação - SVM - 18.45 segundos
+    03/12/2021 03:18:52 - Classificação - Naive Bayes - 1.33 segundos
+    03/12/2021 03:19:07 - Classificação - RNA - classifier size = 10 - 15.28 segundos
+    03/12/2021 03:19:25 - Classificação - RNA - classifier size = 50 - 18.31 segundos
+    03/12/2021 03:19:44 - Classificação - RNA - classifier size = 100 - 18.38 segundos
+  03/12/2021 03:21:17 - Processamento de Linguagem Natural - Word2vec - Skipgram - Sum - vector size = 100 - 93.11 segundos
+    03/12/2021 03:21:26 - Classificação - SVM - 9.22 segundos
+    03/12/2021 03:21:27 - Classificação - Naive Bayes - 0.88 segundos
+    03/12/2021 03:21:42 - Classificação - RNA - classifier size = 10 - 14.91 segundos
+    03/12/2021 03:21:57 - Classificação - RNA - classifier size = 50 - 15.44 segundos
+    03/12/2021 03:22:12 - Classificação - RNA - classifier size = 100 - 14.37 segundos
+  03/12/2021 03:23:58 - Processamento de Linguagem Natural - Word2vec - Skipgram - Sum - vector size = 200 - 105.9 segundos
+    03/12/2021 03:24:14 - Classificação - SVM - 16.87 segundos
+    03/12/2021 03:24:15 - Classificação - Naive Bayes - 0.93 segundos
+    03/12/2021 03:24:30 - Classificação - RNA - classifier size = 10 - 14.87 segundos
+    03/12/2021 03:24:46 - Classificação - RNA - classifier size = 50 - 15.7 segundos
+    03/12/2021 03:25:01 - Classificação - RNA - classifier size = 100 - 15.24 segundos
+  03/12/2021 03:27:13 - Processamento de Linguagem Natural - Word2vec - Skipgram - Sum - vector size = 300 - 131.74 segundos
+    03/12/2021 03:27:37 - Classificação - SVM - 24.58 segundos
+    03/12/2021 03:27:39 - Classificação - Naive Bayes - 1.02 segundos
+    03/12/2021 03:27:55 - Classificação - RNA - classifier size = 10 - 16.03 segundos
+    03/12/2021 03:28:10 - Classificação - RNA - classifier size = 50 - 15.65 segundos
+    03/12/2021 03:28:26 - Classificação - RNA - classifier size = 100 - 15.4 segundos
+  03/12/2021 03:29:47 - Processamento de Linguagem Natural - Word2vec - Skipgram - Average - vector size = 100 - 80.95 segundos
+    03/12/2021 03:30:16 - Classificação - SVM - 29.84 segundos
+    03/12/2021 03:30:17 - Classificação - Naive Bayes - 1.1 segundos
+    03/12/2021 03:30:32 - Classificação - RNA - classifier size = 10 - 14.43 segundos
+    03/12/2021 03:30:48 - Classificação - RNA - classifier size = 50 - 15.76 segundos
+    03/12/2021 03:31:03 - Classificação - RNA - classifier size = 100 - 15.3 segundos
+  03/12/2021 03:32:49 - Processamento de Linguagem Natural - Word2vec - Skipgram - Average - vector size = 200 - 105.64 segundos
+    03/12/2021 03:33:47 - Classificação - SVM - 57.93 segundos
+    03/12/2021 03:33:48 - Classificação - Naive Bayes - 1.18 segundos
+    03/12/2021 03:34:03 - Classificação - RNA - classifier size = 10 - 15.34 segundos
+    03/12/2021 03:34:19 - Classificação - RNA - classifier size = 50 - 15.82 segundos
+    03/12/2021 03:34:34 - Classificação - RNA - classifier size = 100 - 15.59 segundos
+  03/12/2021 03:36:47 - Processamento de Linguagem Natural - Word2vec - Skipgram - Average - vector size = 300 - 132.05 segundos
+    03/12/2021 03:38:19 - Classificação - SVM - 92.57 segundos
+    03/12/2021 03:38:20 - Classificação - Naive Bayes - 1.27 segundos
+    03/12/2021 03:38:36 - Classificação - RNA - classifier size = 10 - 15.76 segundos
+    03/12/2021 03:38:51 - Classificação - RNA - classifier size = 50 - 15.19 segundos
+    03/12/2021 03:39:07 - Classificação - RNA - classifier size = 100 - 15.77 segundos
+  03/12/2021 03:39:37 - Processamento de Linguagem Natural - Word2vec - CBOW - Sum - vector size = 100 - 29.52 segundos
+    03/12/2021 03:39:45 - Classificação - SVM - 8.27 segundos
+    03/12/2021 03:39:46 - Classificação - Naive Bayes - 0.87 segundos
+    03/12/2021 03:40:01 - Classificação - RNA - classifier size = 10 - 15.29 segundos
+    03/12/2021 03:40:15 - Classificação - RNA - classifier size = 50 - 14.42 segundos
+    03/12/2021 03:40:29 - Classificação - RNA - classifier size = 100 - 14.01 segundos
+  03/12/2021 03:41:04 - Processamento de Linguagem Natural - Word2vec - CBOW - Sum - vector size = 200 - 34.46 segundos
+    03/12/2021 03:41:19 - Classificação - SVM - 15.52 segundos
+    03/12/2021 03:41:20 - Classificação - Naive Bayes - 0.94 segundos
+    03/12/2021 03:41:35 - Classificação - RNA - classifier size = 10 - 14.93 segundos
+    03/12/2021 03:41:51 - Classificação - RNA - classifier size = 50 - 15.71 segundos
+    03/12/2021 03:42:06 - Classificação - RNA - classifier size = 100 - 14.85 segundos
+  03/12/2021 03:42:44 - Processamento de Linguagem Natural - Word2vec - CBOW - Sum - vector size = 300 - 38.16 segundos
+    03/12/2021 03:43:06 - Classificação - SVM - 22.1 segundos
+    03/12/2021 03:43:07 - Classificação - Naive Bayes - 1.02 segundos
+    03/12/2021 03:43:23 - Classificação - RNA - classifier size = 10 - 15.44 segundos
+    03/12/2021 03:43:38 - Classificação - RNA - classifier size = 50 - 15.68 segundos
+    03/12/2021 03:43:55 - Classificação - RNA - classifier size = 100 - 16.44 segundos
+  03/12/2021 03:44:24 - Processamento de Linguagem Natural - Word2vec - CBOW - Average - vector size = 100 - 29.42 segundos
+    03/12/2021 03:44:52 - Classificação - SVM - 27.51 segundos
+    03/12/2021 03:44:53 - Classificação - Naive Bayes - 0.88 segundos
+    03/12/2021 03:45:08 - Classificação - RNA - classifier size = 10 - 15.34 segundos
+    03/12/2021 03:45:24 - Classificação - RNA - classifier size = 50 - 15.93 segundos
+    03/12/2021 03:45:40 - Classificação - RNA - classifier size = 100 - 16.09 segundos
+  03/12/2021 03:46:14 - Processamento de Linguagem Natural - Word2vec - CBOW - Average - vector size = 200 - 34.27 segundos
+    03/12/2021 03:47:11 - Classificação - SVM - 56.39 segundos
+    03/12/2021 03:47:12 - Classificação - Naive Bayes - 0.96 segundos
+    03/12/2021 03:47:27 - Classificação - RNA - classifier size = 10 - 15.93 segundos
+    03/12/2021 03:47:44 - Classificação - RNA - classifier size = 50 - 16.29 segundos
+    03/12/2021 03:48:00 - Classificação - RNA - classifier size = 100 - 16.65 segundos
+  03/12/2021 03:48:38 - Processamento de Linguagem Natural - Word2vec - CBOW - Average - vector size = 300 - 37.98 segundos
+    03/12/2021 03:50:01 - Classificação - SVM - 82.87 segundos
+    03/12/2021 03:50:03 - Classificação - Naive Bayes - 1.3 segundos
+    03/12/2021 03:50:18 - Classificação - RNA - classifier size = 10 - 15.72 segundos
+    03/12/2021 03:50:35 - Classificação - RNA - classifier size = 50 - 16.47 segundos
+    03/12/2021 03:50:52 - Classificação - RNA - classifier size = 100 - 17.23 segundos
+  03/12/2021 03:51:59 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 10 - 67.29 segundos
+    03/12/2021 03:52:47 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 48.13 segundos
+    03/12/2021 03:53:42 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 54.6 segundos
+    03/12/2021 03:54:54 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 72.17 segundos
+  03/12/2021 03:56:02 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 50 - 140.43 segundos
+    03/12/2021 03:57:52 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 109.14 segundos
+    03/12/2021 04:00:19 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 147.11 segundos
+    03/12/2021 04:05:02 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 283.69 segundos
+  03/12/2021 04:06:24 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 100 - 365.07 segundos
+    03/12/2021 04:11:17 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 293.38 segundos
+    03/12/2021 04:17:53 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 395.51 segundos
+    03/12/2021 04:26:43 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 530.82 segundos
+  03/12/2021 04:28:04 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 10 - 611.04 segundos
+    03/12/2021 04:28:54 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 50.81 segundos
+    03/12/2021 04:29:53 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 58.28 segundos
+    03/12/2021 04:31:09 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 76.11 segundos
+  03/12/2021 04:32:29 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 50 - 156.19 segundos
+    03/12/2021 04:34:23 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 113.88 segundos
+    03/12/2021 04:36:51 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 148.62 segundos
+    03/12/2021 04:40:34 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 222.73 segundos
+  03/12/2021 04:41:43 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 100 - matrix size = 100 - 291.57 segundos
+    03/12/2021 04:44:35 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 172.22 segundos
+    03/12/2021 04:49:17 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 281.37 segundos
+    03/12/2021 04:57:19 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 100 - 482.83 segundos
+  03/12/2021 04:58:52 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 10 - 92.64 segundos
+    03/12/2021 04:59:42 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 50.24 segundos
+    03/12/2021 05:00:37 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 54.7 segundos
+    03/12/2021 05:01:44 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 67.27 segundos
+  03/12/2021 05:03:17 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 50 - 160.42 segundos
+    03/12/2021 05:05:10 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 112.86 segundos
+    03/12/2021 05:07:33 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 142.2 segundos
+    03/12/2021 05:11:40 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 247.53 segundos
+  03/12/2021 05:13:15 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 100 - 342.32 segundos
+    03/12/2021 05:16:28 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 193.28 segundos
+    03/12/2021 05:20:17 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 228.62 segundos
+    03/12/2021 05:29:15 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 538.04 segundos
+  03/12/2021 05:31:19 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 10 - 661.96 segundos
+    03/12/2021 05:32:37 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 78.26 segundos
+    03/12/2021 05:34:02 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 85.39 segundos
+    03/12/2021 05:35:49 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 106.33 segundos
+  03/12/2021 05:37:52 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 50 - 229.71 segundos
+    03/12/2021 05:40:38 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 165.53 segundos
+    03/12/2021 05:44:01 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 203.58 segundos
+    03/12/2021 05:49:36 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 334.42 segundos
+  03/12/2021 05:51:41 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 200 - matrix size = 100 - 459.88 segundos
+    03/12/2021 05:56:44 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 302.69 segundos
+    03/12/2021 06:02:38 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 354.61 segundos
+    03/12/2021 06:12:21 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 100 - 582.41 segundos
+  03/12/2021 06:15:07 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 10 - 166.65 segundos
+    03/12/2021 06:16:23 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 75.33 segundos
+    03/12/2021 06:17:46 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 82.93 segundos
+    03/12/2021 06:19:30 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 104.79 segundos
+  03/12/2021 06:22:17 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 50 - 271.41 segundos
+    03/12/2021 06:24:32 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 134.56 segundos
+    03/12/2021 06:27:46 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 193.95 segundos
+    03/12/2021 06:33:00 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 313.97 segundos
+  03/12/2021 06:35:19 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 100 - 453.62 segundos
+    03/12/2021 06:38:37 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 198.24 segundos
+    03/12/2021 06:43:23 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 285.01 segundos
+    03/12/2021 06:51:28 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 485.04 segundos
+  03/12/2021 06:53:30 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 10 - 607.77 segundos
+    03/12/2021 06:54:19 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 48.4 segundos
+    03/12/2021 06:55:16 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 57.23 segundos
+    03/12/2021 06:56:29 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 73.32 segundos
+  03/12/2021 06:58:30 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 50 - 193.7 segundos
+    03/12/2021 07:00:22 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 112.46 segundos
+    03/12/2021 07:03:14 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 171.48 segundos
+    03/12/2021 07:07:09 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 235.38 segundos
+  03/12/2021 07:09:10 - Processamento de Linguagem Natural - Word2vec - Skipgram - Matrix - vector size = 300 - matrix size = 100 - 356.18 segundos
+    03/12/2021 07:12:24 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 194.65 segundos
+    03/12/2021 07:17:31 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 306.42 segundos
+    03/12/2021 07:26:06 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 100 - 514.91 segundos
+  03/12/2021 07:26:28 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 21.94 segundos
+    03/12/2021 07:30:54 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 266.45 segundos
+    03/12/2021 07:36:34 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 340.23 segundos
+    03/12/2021 07:45:10 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 515.39 segundos
+  03/12/2021 07:45:33 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 50 - 538.59 segundos
+    03/12/2021 07:50:26 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 293.04 segundos
+    03/12/2021 07:55:54 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 327.74 segundos
+    03/12/2021 08:04:39 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 524.81 segundos
+  03/12/2021 08:05:02 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 100 - 547.93 segundos
+    03/12/2021 08:09:41 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 279.01 segundos
+    03/12/2021 08:15:32 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 351.71 segundos
+    03/12/2021 08:22:40 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 427.86 segundos
+  03/12/2021 08:23:00 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 448.11 segundos
+    03/12/2021 08:26:04 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 183.54 segundos
+    03/12/2021 08:30:33 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 268.86 segundos
+    03/12/2021 08:38:01 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 447.83 segundos
+  03/12/2021 08:38:18 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 50 - 465.18 segundos
+    03/12/2021 08:41:21 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 182.77 segundos
+    03/12/2021 08:44:51 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 210.06 segundos
+    03/12/2021 08:51:54 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 422.62 segundos
+  03/12/2021 08:52:18 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 100 - 446.97 segundos
+    03/12/2021 08:55:36 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 198.36 segundos
+    03/12/2021 08:59:36 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 240.05 segundos
+    03/12/2021 09:07:23 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 100 - 466.67 segundos
+  03/12/2021 09:07:46 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 10 - 22.55 segundos
+    03/12/2021 09:12:50 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 304.63 segundos
+    03/12/2021 09:20:47 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 477.02 segundos
+    03/12/2021 09:34:50 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 842.34 segundos
+  03/12/2021 09:35:10 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 50 - 862.96 segundos
+    03/12/2021 09:40:35 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 324.4 segundos
+    03/12/2021 09:50:07 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 572.75 segundos
+    03/12/2021 10:04:25 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 857.89 segundos
+  03/12/2021 10:04:55 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 100 - 887.3 segundos
+    03/12/2021 10:11:03 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 368.56 segundos
+    03/12/2021 10:17:56 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 412.43 segundos
+    03/12/2021 10:30:56 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 780.39 segundos
+  03/12/2021 10:31:17 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 10 - 801.26 segundos
+    03/12/2021 10:36:36 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 319.36 segundos
+    03/12/2021 10:44:54 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 497.94 segundos
+    03/12/2021 10:59:20 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 866.11 segundos
+  03/12/2021 10:59:41 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 50 - 886.7 segundos
+    03/12/2021 11:05:16 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 335.11 segundos
+    03/12/2021 11:15:15 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 598.89 segundos
+    03/12/2021 11:30:36 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 921.09 segundos
+  03/12/2021 11:31:06 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 200 - matrix size = 100 - 950.8 segundos
+    03/12/2021 11:40:16 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 550.54 segundos
+    03/12/2021 11:48:00 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 464.14 segundos
+    03/12/2021 12:01:28 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 100 - 807.26 segundos
+  03/12/2021 12:02:01 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 10 - 33.46 segundos
+    03/12/2021 12:12:46 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 644.63 segundos
+    03/12/2021 12:30:04 - Classificação - LSTM - classifier size = 50 - matrix size = 10 - 1038.44 segundos
+    03/12/2021 12:57:08 - Classificação - LSTM - classifier size = 100 - matrix size = 10 - 1623.67 segundos
+  03/12/2021 12:57:41 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 50 - 1657.33 segundos
+    03/12/2021 13:06:07 - Classificação - LSTM - classifier size = 10 - matrix size = 50 - 505.92 segundos
+    03/12/2021 13:16:45 - Classificação - LSTM - classifier size = 50 - matrix size = 50 - 637.51 segundos
+    03/12/2021 13:36:38 - Classificação - LSTM - classifier size = 100 - matrix size = 50 - 1192.99 segundos
+  03/12/2021 13:37:04 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 100 - 1218.8 segundos
+    03/12/2021 13:47:26 - Classificação - LSTM - classifier size = 10 - matrix size = 100 - 622.49 segundos
+    03/12/2021 14:02:46 - Classificação - LSTM - classifier size = 50 - matrix size = 100 - 919.61 segundos
+    03/12/2021 14:25:40 - Classificação - LSTM - classifier size = 100 - matrix size = 100 - 1373.74 segundos
+  03/12/2021 14:26:13 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 10 - 1406.72 segundos
+    03/12/2021 14:38:15 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 722.91 segundos
+    03/12/2021 14:55:38 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 10 - 1042.39 segundos
+    03/12/2021 15:21:32 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 10 - 1554.18 segundos
+  03/12/2021 15:22:06 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 50 - 1588.32 segundos
+    03/12/2021 15:30:33 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 50 - 507.16 segundos
+    03/12/2021 15:40:55 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 50 - 622.01 segundos
+    03/12/2021 15:59:28 - Classificação - LSTM - Transposed - classifier size = 100 - matrix size = 50 - 1112.45 segundos
+  03/12/2021 15:59:54 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 100 - 1138.35 segundos
+    03/12/2021 16:08:06 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 100 - 491.91 segundos
+    03/12/2021 16:18:37 - Classificação - LSTM - Transposed - classifier size = 50 - matrix size = 100 - 631.69 segundos
+06/12/2021 13:32:12 - Carregando dataset português - 16.6 segundos
+ 06/12/2021 13:32:36 - Pré-processamento - removeStopWords = True - 23.97 segundos
+06/12/2021 13:32:49 - Carregando dataset português - 13.41 segundos
+ 06/12/2021 13:32:58 - Pré-processamento - removeStopWords = False - 8.99 segundos
+06/12/2021 13:33:57 - Carregando dataset português - 13.57 segundos
+ 06/12/2021 13:34:21 - Pré-processamento - removeStopWords = True - 24.05 segundos
+06/12/2021 13:34:35 - Carregando dataset português - 13.36 segundos
+ 06/12/2021 13:34:44 - Pré-processamento - removeStopWords = False - 8.98 segundos
+06/12/2021 14:13:01 - Carregando dataset português - 14.59 segundos
+ 06/12/2021 14:13:25 - Pré-processamento - removeStopWords = True - 24.63 segundos
+06/12/2021 14:13:40 - Carregando dataset português - 14.88 segundos
+ 06/12/2021 14:13:49 - Pré-processamento - removeStopWords = False - 9.01 segundos
+06/12/2021 14:14:33 - Carregando dataset inglês - 43.91 segundos
+06/12/2021 14:24:04 - Carregando dataset português - 14.2 segundos
+ 06/12/2021 14:24:28 - Pré-processamento - removeStopWords = True - 24.37 segundos
+  06/12/2021 14:25:00 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 100 - 31.51 segundos
+06/12/2021 14:34:15 - Carregando dataset inglês - 42.94 segundos
+ 06/12/2021 14:34:45 - Pré-processamento - removeStopWords = False - 30.13 segundos
+06/12/2021 14:40:21 - Carregando dataset português - 14.12 segundos
+ 06/12/2021 14:40:45 - Pré-processamento - removeStopWords = True - 23.91 segundos
+06/12/2021 14:40:58 - Carregando dataset português - 13.98 segundos
+ 06/12/2021 14:41:07 - Pré-processamento - removeStopWords = False - 9.0 segundos
+  06/12/2021 14:42:23 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 75.39 segundos
+06/12/2021 14:45:21 - Carregando dataset português - 13.97 segundos
+ 06/12/2021 14:45:46 - Pré-processamento - removeStopWords = True - 24.74 segundos
+  06/12/2021 14:46:16 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 300 - matrix size = 100 - 30.59 segundos
+06/12/2021 15:21:59 - Carregando dataset português - 14.04 segundos
+ 06/12/2021 15:22:23 - Pré-processamento - removeStopWords = True - 24.0 segundos
+  06/12/2021 15:23:26 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 62.85 segundos
+    06/12/2021 15:23:38 - Classificação - SVM - 11.92 segundos
+    06/12/2021 15:23:40 - Classificação - Naive Bayes - 1.42 segundos
+    06/12/2021 15:24:04 - Classificação - RNA - classifier size = 10 - 24.57 segundos
+    06/12/2021 15:24:31 - Classificação - RNA - classifier size = 50 - 26.66 segundos
+    06/12/2021 15:24:57 - Classificação - RNA - classifier size = 100 - 25.85 segundos
+06/12/2021 15:32:24 - Carregando dataset português - 14.37 segundos
+ 06/12/2021 15:32:48 - Pré-processamento - removeStopWords = True - 23.94 segundos
+  06/12/2021 15:33:53 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 64.6 segundos
+    06/12/2021 15:34:04 - Classificação - SVM - 11.82 segundos
+    06/12/2021 15:34:06 - Classificação - Naive Bayes - 1.51 segundos
+06/12/2021 15:35:14 - Carregando dataset português - 14.25 segundos
+ 06/12/2021 15:35:38 - Pré-processamento - removeStopWords = True - 23.77 segundos
+  06/12/2021 15:36:39 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 61.88 segundos
+    06/12/2021 15:36:51 - Classificação - SVM - 11.18 segundos
+    06/12/2021 15:36:52 - Classificação - Naive Bayes - 1.45 segundos
+    06/12/2021 15:37:16 - Classificação - RNA - classifier size = 10 - 23.43 segundos
+06/12/2021 15:40:12 - Carregando dataset português - 13.95 segundos
+ 06/12/2021 15:40:35 - Pré-processamento - removeStopWords = True - 23.89 segundos
+  06/12/2021 15:41:41 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 65.16 segundos
+    06/12/2021 15:41:53 - Classificação - SVM - 11.99 segundos
+    06/12/2021 15:41:54 - Classificação - Naive Bayes - 1.39 segundos
+    06/12/2021 15:42:18 - Classificação - RNA - classifier size = 10 - 23.81 segundos
+  06/12/2021 15:42:37 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 19.47 segundos
+    06/12/2021 15:47:25 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 287.52 segundos
+  06/12/2021 15:47:44 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 306.87 segundos
+    06/12/2021 15:50:23 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 158.46 segundos
+06/12/2021 16:33:10 - Carregando dataset português - 14.24 segundos
+ 06/12/2021 16:33:34 - Pré-processamento - removeStopWords = True - 23.88 segundos
+  06/12/2021 16:34:38 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 63.96 segundos
+    06/12/2021 16:34:49 - Classificação - SVM - 11.38 segundos
+    06/12/2021 16:34:51 - Classificação - Naive Bayes - 1.43 segundos
+    06/12/2021 16:35:15 - Classificação - RNA - classifier size = 10 - 24.55 segundos
+  06/12/2021 16:35:36 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 20.47 segundos
+    06/12/2021 16:40:32 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 295.94 segundos
+  06/12/2021 16:40:51 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 315.74 segundos
+    06/12/2021 16:45:42 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 290.43 segundos
+06/12/2021 16:53:55 - Carregando dataset português - 13.97 segundos
+ 06/12/2021 16:54:19 - Pré-processamento - removeStopWords = True - 23.91 segundos
+  06/12/2021 16:55:21 - Processamento de Linguagem Natural - Doc2vec - PV-DM - vector size = 100 - 62.24 segundos
+    06/12/2021 16:55:32 - Classificação - SVM - 11.13 segundos
+    06/12/2021 16:55:34 - Classificação - Naive Bayes - 1.41 segundos
+    06/12/2021 16:55:59 - Classificação - RNA - classifier size = 10 - 24.94 segundos
+  06/12/2021 16:56:18 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 19.18 segundos
+    06/12/2021 17:01:08 - Classificação - LSTM - classifier size = 10 - matrix size = 10 - 290.09 segundos
+  06/12/2021 17:01:28 - Processamento de Linguagem Natural - Word2vec - CBOW - Matrix - vector size = 100 - matrix size = 10 - 309.65 segundos
+    06/12/2021 17:06:25 - Classificação - LSTM - Transposed - classifier size = 10 - matrix size = 10 - 297.63 segundos
