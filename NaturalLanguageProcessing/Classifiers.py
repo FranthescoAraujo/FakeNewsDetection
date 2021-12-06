@@ -1,19 +1,19 @@
-from threading import local
+
 import matplotlib.pyplot as plt
 import tensorflow.keras as keras
 import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-from sklearn.model_selection import KFold, train_test_split
+from sklearn.model_selection import KFold
 from sklearn.metrics import precision_recall_curve, confusion_matrix, ConfusionMatrixDisplay
 from sklearn.metrics import auc, precision_score, recall_score, accuracy_score
 from warnings import filterwarnings
 filterwarnings("ignore", category=FutureWarning)
 
 class Classifiers:
-    def __init__(self, listVectors, listLabels, foldsNumber = 5):
+    def __init__(self, xTrain, xTest, yTrain, yTest, foldsNumber = 5):
         self.foldsNumber = foldsNumber
-        self.xTrain, self.xTest, self.yTrain, self.yTest = train_test_split(np.array(listVectors), np.array(listLabels), test_size=0.3, random_state=42)
+        self.xTrain, self.xTest, self.yTrain, self.yTest = np.array(xTrain), np.array(xTest), np.array(yTrain), np.array(yTest)
         self.metrics = {"accuracy":[0, 0], "precision":[0, 0], "recall":[0, 0], "AUC":[0, 0]}
 
     def setTitle(self, title):
@@ -22,13 +22,13 @@ class Classifiers:
     def setLocalSave(self, localSave):
         self.localSave = localSave
 
-    def supportVectorMachine(self, vectorSize):
+    def supportVectorMachine(self):
         svm = SVC(C=1, probability=True ,random_state=42)
-        return self.__crossValidationSklearn(svm, vectorSize, "Support Vector Machine")
+        return self.__crossValidationSklearn(svm)
 
-    def naiveBayes(self, vectorSize):
+    def naiveBayes(self):
         nb = GaussianNB()
-        return self.__crossValidationSklearn(nb, vectorSize, "Naive Bayes")
+        return self.__crossValidationSklearn(nb)
 
     def neuralNetwork(self, input_size = 100, hidden_layer = 100):
         callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
@@ -37,7 +37,7 @@ class Classifiers:
             keras.layers.Dense(hidden_layer, activation='relu'),
             keras.layers.Dense(1, activation='sigmoid')
         ])
-        return self.__crossValidationTensorflow(model, input_size, "Neural Network", callback)
+        return self.__crossValidationTensorflow(model, callback)
 
     def longShortTermMemory(self, lstm_size = 100,  vector_size = 100, matrix_size = 100, isTransposed = False):
         callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
@@ -48,15 +48,15 @@ class Classifiers:
             ])
             self.xTrain = np.transpose(self.xTrain, (0,2,1))
             self.xTest = np.transpose(self.xTest, (0,2,1))
-            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory Transposed - Matrix Size = " + str(matrix_size) + " ", callback)
+            return self.__crossValidationTensorflow(model, callback)
         else:
             model = keras.Sequential([
                 keras.layers.LSTM(lstm_size, input_shape=(matrix_size, vector_size)),
                 keras.layers.Dense(1, activation='sigmoid')
             ])
-            return self.__crossValidationTensorflow(model, vector_size, "Long Short Term Memory - Matrix Size = " + str(matrix_size) + " ", callback)
+            return self.__crossValidationTensorflow(model, callback)
         
-    def __crossValidationSklearn(self, classifier, vectorSize, classifierName):
+    def __crossValidationSklearn(self, classifier):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
         plt.suptitle(self.title, fontsize=10)
         k_fold = KFold(n_splits=self.foldsNumber, shuffle=True, random_state=42)
@@ -110,7 +110,7 @@ class Classifiers:
         self.metrics["AUC"][1] = str(round(np.std(AUCList),4))
         return self.metrics
     
-    def __crossValidationTensorflow(self, classifier, vectorSize, classifierName, callback):
+    def __crossValidationTensorflow(self, classifier, callback):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
         plt.suptitle(self.title, fontsize=10)
         k_fold = KFold(n_splits=self.foldsNumber, shuffle=True, random_state=42)

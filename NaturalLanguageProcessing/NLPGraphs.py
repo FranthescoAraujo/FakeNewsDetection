@@ -1,6 +1,7 @@
 import time
 import os
 import csv
+import numpy as np
 
 from scipy.sparse import data
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
@@ -9,6 +10,7 @@ from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
 from DocumentRepresentationWord2Vec import DocumentRepresentationWord2Vec
 from Classifiers import Classifiers
 from datetime import datetime
+from sklearn.model_selection import train_test_split
 
 def tempoAgora():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -74,11 +76,9 @@ for dataset in dataSetCsv:
         folders = os.listdir(CORPUS_PATH)
         listNews = []
         listLabels = []
-        listTexts = []
         for folder in folders:
             for file in os.listdir(CORPUS_PATH + folder):
                 f = open(CORPUS_PATH + folder + "/" + file, "r")
-                listTexts.append(CORPUS_PATH + folder + "/" + file)
                 listNews.append(f.read())
                 if folder == "Fake":
                     listLabels.append(1)
@@ -96,6 +96,8 @@ for dataset in dataSetCsv:
         newlistNews = PreProcessing.toLowerCase(newlistNews)
         if removeStopWords:
             newlistNews = PreProcessing.removeStopWords(newlistNews, dataset)
+        listNewsTrain, listNewsTest, yTrain, yTest = train_test_split(np.array(newlistNews), np.array(listLabels), test_size=0.3, random_state=42)
+        del newlistNews, listLabels
         toc = time.time() - tic
         log.write(" " + tempoAgora() + " - Pré-processamento - removeStopWords = " + str(removeStopWords) + " - " + str(round(toc,2)) + " segundos\n")
         print(" " + tempoAgora() + " - Pré-processamento - removeStopWords = " + str(removeStopWords) + " - " + str(round(toc,2)) + " segundos")
@@ -110,26 +112,26 @@ for dataset in dataSetCsv:
                 continueCsv[3] = False
                 tic = time.time()
                 if (nlp == "Doc2vec - PV-DM"):
-                    doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
-                    listVectors = doc2vec.paragraphVectorDistributedMemory(vector_size=vectorSize)
+                    doc2vec = DocumentRepresentationDoc2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = doc2vec.paragraphVectorDistributedMemory(vector_size=vectorSize)
                 if (nlp == "Doc2vec - PV-DBOW"):
-                    doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
-                    listVectors = doc2vec.paragraphVectorDistributedBagOfWords(vector_size=vectorSize)
+                    doc2vec = DocumentRepresentationDoc2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = doc2vec.paragraphVectorDistributedBagOfWords(vector_size=vectorSize)
                 if (nlp == "Doc2vec - Concatenated"):
-                    doc2vec = DocumentRepresentationDoc2Vec(newlistNews)
-                    listVectors = doc2vec.concatBothParagraphVectors(vector_size=vectorSize)
+                    doc2vec = DocumentRepresentationDoc2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = doc2vec.concatBothParagraphVectors(vector_size=vectorSize)
                 if (nlp == "Word2vec - Skipgram - Sum"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.skipGramDocumentRepresentation(meanSumOrConcat=1, vector_size=vectorSize)
+                    word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = word2vec.skipGramDocumentRepresentation(meanSumOrConcat=1, vector_size=vectorSize)
                 if (nlp == "Word2vec - Skipgram - Average"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.skipGramDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
+                    word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = word2vec.skipGramDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
                 if (nlp == "Word2vec - CBOW - Sum"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=1, vector_size=vectorSize)
+                    word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=1, vector_size=vectorSize)
                 if (nlp == "Word2vec - CBOW - Average"):
-                    word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                    listVectors = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
+                    word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                    xTrain, xTest = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
                 if (nlp == "Word2vec - Skipgram - Matrix"):
                     for classifier in classifierCsv:
                         if (continueCsv[4] and classifier != lastLine[4]):
@@ -140,8 +142,9 @@ for dataset in dataSetCsv:
                                 if (continueCsv[6] and matrixSize != int(lastLine[6])):
                                     continue
                                 continueCsv[6] = False
-                                word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                                listVectors = word2vec.skipGramMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
+                                tic = time.time()
+                                word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                                xTrain, xTest = word2vec.skipGramMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
                                 toc = time.time() - tic
                                 log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
                                 print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
@@ -152,7 +155,7 @@ for dataset in dataSetCsv:
                                         continueCsv[5] = False
                                         continue  
                                     tic = time.time()
-                                    classificador = Classifiers(listVectors, listLabels)
+                                    classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                                     classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + classifier + " - output size = " + str(classifierSize))
                                     classificador.setLocalSave("results/" + dataset + "/stopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize))
                                     metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
@@ -173,8 +176,9 @@ for dataset in dataSetCsv:
                                 if (continueCsv[6] and matrixSize != int(lastLine[6])):
                                     continue
                                 continueCsv[6] = False
-                                word2vec = DocumentRepresentationWord2Vec(newlistNews)
-                                listVectors = word2vec.continuousBagOfWordsMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
+                                tic = time.time()
+                                word2vec = DocumentRepresentationWord2Vec(listNewsTrain, listNewsTest)
+                                xTrain, xTest = word2vec.continuousBagOfWordsMatrixDocumentRepresentation(vector_size=vectorSize, matrix_size=matrixSize)
                                 toc = time.time() - tic
                                 log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
                                 print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
@@ -185,7 +189,7 @@ for dataset in dataSetCsv:
                                         continueCsv[5] = False
                                         continue
                                     tic = time.time()
-                                    classificador = Classifiers(listVectors, listLabels)
+                                    classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                                     classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + classifier + " - output size = " + str(classifierSize))
                                     classificador.setLocalSave("results/" + dataset + "/stopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize))
                                     metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
@@ -210,10 +214,10 @@ for dataset in dataSetCsv:
                         continueCsv[5] = False
                         continueCsv[6] = False
                         tic = time.time()
-                        classificador = Classifiers(listVectors, listLabels)
+                        classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                         classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - " + classifier)
                         classificador.setLocalSave("results/" + dataset + "/stopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize))
-                        metrics = classificador.supportVectorMachine(vectorSize=vectorSize)
+                        metrics = classificador.supportVectorMachine()
                         hiperlink = LOCAL_PATH + "results\\" + dataset + "\\stopWords-" + str(removeStopWords) + "\\" + classifier + "\\" + nlp + " - vectorSize-" + str(vectorSize) + ".png"
                         results.writerow([hiperlink, dataset, removeStopWords, nlp, vectorSize, classifier, "-", "-", metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                         toc = time.time() - tic
@@ -229,10 +233,10 @@ for dataset in dataSetCsv:
                         continueCsv[5] = False
                         continueCsv[6] = False
                         tic = time.time()
-                        classificador = Classifiers(listVectors, listLabels)
+                        classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                         classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - " + classifier)
                         classificador.setLocalSave("results/" + dataset + "/stopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize))
-                        metrics = classificador.naiveBayes(vectorSize=vectorSize)
+                        metrics = classificador.naiveBayes()
                         hiperlink = LOCAL_PATH + "results\\" + dataset + "\\stopWords-" + str(removeStopWords) + "\\" + classifier + "\\" + nlp + " - vectorSize-" + str(vectorSize) + ".png"
                         results.writerow([hiperlink, dataset, removeStopWords, nlp, vectorSize, classifier, "-", "-", metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                         toc = time.time() - tic
@@ -251,7 +255,7 @@ for dataset in dataSetCsv:
                                 continue
                             continueCsv[6] = False
                             tic = time.time()
-                            classificador = Classifiers(listVectors, listLabels)
+                            classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                             classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - " + classifier + " - hidden layer = " + str(classifierSize))
                             classificador.setLocalSave("results/" + dataset + "/stopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize) + " - hiddenLayer-" + str(classifierSize))
                             metrics = classificador.neuralNetwork(input_size=vectorSize, hidden_layer=classifierSize)
