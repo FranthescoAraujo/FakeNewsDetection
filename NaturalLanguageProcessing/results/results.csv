@@ -1,4 +1,1 @@
-DATASET,REMOVE STOP WORDS,NATURAL LANGUAGE PROCESSING,VECTOR SIZE,CLASSIFIER,CLASSIFIER SIZE,MATRIX SIZE,ACCURACY AVERAGE,ACCURACY STANDARD DEVIATION,PRECISION AVERAGE,PRECISION STANDARD DEVIATION,RECALL AVERAGE,RECALL STANDARD DEVIATION,AUC-PR AVERAGE,AUC-PR STANDARD DEVIATION
-E:\FakeNewsDetection\NaturalLanguageProcessing\results\português\stopWords-True\SVM\Doc2vec - PV-DM - vectorSize-100.png,português,True,Doc2vec - PV-DM,100,SVM,-,-,0.5081,0.0002,0.5057,0.0001,1.0,0.0,0.3686,0.0006
-E:\FakeNewsDetection\NaturalLanguageProcessing\results\português\stopWords-True\Naive Bayes\Doc2vec - PV-DM - vectorSize-100.png,português,True,Doc2vec - PV-DM,100,Naive Bayes,-,-,0.5101,0.0002,0.5067,0.0001,1.0,0.0,0.7549,0.0001
-E:\FakeNewsDetection\NaturalLanguageProcessing\results\português\stopWords-True\RNA\Doc2vec - PV-DM - vectorSize-100 - hiddenLayer-10.png,português,True,Doc2vec - PV-DM,100,RNA,10,-,0.5045,0.0003,0.5039,0.0002,1.0,0.0,0.363,0.0014
+
