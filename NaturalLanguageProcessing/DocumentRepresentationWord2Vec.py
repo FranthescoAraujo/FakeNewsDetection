@@ -15,6 +15,8 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [0]*vector_size
             numWords = len(document)
             for word in document:
+                if word not in model:
+                    continue
                 if meanSumOrConcat == 0:
                     documentRepresentation+=model[word]
                 if meanSumOrConcat == 1:
@@ -28,6 +30,8 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [0]*vector_size
             numWords = len(document)
             for word in document:
+                if word not in model:
+                    continue
                 if meanSumOrConcat == 0:
                     documentRepresentation+=model[word]
                 if meanSumOrConcat == 1:
@@ -47,6 +51,8 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [0]*vector_size
             numWords = len(document)
             for word in document:
+                if word not in model:
+                    continue
                 if meanSumOrConcat == 0:
                     documentRepresentation+=model[word]
                 if meanSumOrConcat == 1:
@@ -60,6 +66,8 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [0]*vector_size
             numWords = len(document)
             for word in document:
+                if word not in model:
+                    continue
                 if meanSumOrConcat == 0:
                     documentRepresentation+=model[word]
                 if meanSumOrConcat == 1:

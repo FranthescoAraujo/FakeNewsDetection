@@ -1,2 +1,5 @@
+numpy
+scipy
+gensim
 matplotlib
-tensorflow
+sklearn

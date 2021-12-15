@@ -35,6 +35,16 @@ class PreProcessing:
         if dataset == "português":
             return PreProcessing.__remove("StopWordsPortugues.json", documents)
         return PreProcessing.__remove("StopWordsIngles.json", documents)
+    
+    def removeDocumentsWithFewWords(documents, labels, numWords = 10):
+        returnValueDocuments = []
+        returnValueLabels = []
+        for index, document in enumerate(documents):
+            if len(document.split()) <= numWords:
+                continue
+            returnValueDocuments.append(documents[index])
+            returnValueLabels.append(labels[index])
+        return returnValueDocuments, returnValueLabels
         
     def __remove(jsonFile, documents):
         returnValue = []
