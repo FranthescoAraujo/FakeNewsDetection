@@ -25,7 +25,7 @@ def apagarResults(apagar):
         csvFile.close()
         lastLine = resultsCsv[-1]
         return resultsCsv, lastLine
-    resultsCsv = [["LOCAL IMAGES", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"]]
+    resultsCsv = [["LOCAL IMAGENS", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"]]
     lastLine = resultsCsv
     return resultsCsv, lastLine
 
@@ -54,11 +54,11 @@ log = open("results/log.txt", "a")
 del resultsCsv
 
 for dataset in dataSetCsv:
-    if (continueCsv[0] and dataset != lastLine[0]):
+    if (continueCsv[0] and dataset != lastLine[1]):
         continue
     continueCsv[0] = False
     for removeStopWords in removeStopWordsCsv:
-        if (continueCsv[1] and removeStopWords != bool(lastLine[1])):
+        if (continueCsv[1] and removeStopWords != bool(lastLine[2])):
             continue
         continueCsv[1] = False
         tic = time.time()
@@ -96,11 +96,11 @@ for dataset in dataSetCsv:
         print(" " + tempoAgora() + " - Pré-processamento - removeStopWords = " + str(removeStopWords) + " - " + str(round(toc,2)) + " segundos")
 
         for nlp in naturalLanguageProcessingCsv:
-            if (continueCsv[2] and nlp != lastLine[2]):
+            if (continueCsv[2] and nlp != lastLine[3]):
                 continue
             continueCsv[2] = False
             for vectorSize in vectorSizeCsv:
-                if (continueCsv[3] and vectorSize != int(lastLine[3])):
+                if (continueCsv[3] and vectorSize != int(lastLine[4])):
                     continue
                 continueCsv[3] = False
                 tic = time.time()
@@ -127,12 +127,12 @@ for dataset in dataSetCsv:
                     xTrain, xTest = word2vec.continuousBagOfWordsDocumentRepresentation(meanSumOrConcat=0, vector_size=vectorSize)
                 if (nlp == "Word2vec - Skipgram - Matrix"):
                     for classifier in classifierCsv:
-                        if (continueCsv[4] and classifier != lastLine[4]):
+                        if (continueCsv[4] and classifier != lastLine[5]):
                             continue
                         continueCsv[4] = False
                         if classifier == "LSTM" or classifier == "LSTM - Transposed":
                             for matrixSize in matrixSizeCsv:
-                                if (continueCsv[6] and matrixSize != int(lastLine[6])):
+                                if (continueCsv[6] and matrixSize != int(lastLine[7])):
                                     continue
                                 continueCsv[6] = False
                                 tic = time.time()
@@ -142,9 +142,9 @@ for dataset in dataSetCsv:
                                 log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
                                 print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
                                 for classifierSize in classifierSizeCsv:
-                                    if (continueCsv[5] and classifierSize != int(lastLine[5])):
+                                    if (continueCsv[5] and classifierSize != int(lastLine[6])):
                                         continue
-                                    if (continueCsv[5] and classifierSize == int(lastLine[5])):
+                                    if (continueCsv[5] and classifierSize == int(lastLine[6])):
                                         continueCsv[5] = False
                                         continue  
                                     tic = time.time()
@@ -161,12 +161,12 @@ for dataset in dataSetCsv:
                     continue
                 if (nlp == "Word2vec - CBOW - Matrix"):
                     for classifier in classifierCsv:
-                        if (continueCsv[4] and classifier != lastLine[4]):
+                        if (continueCsv[4] and classifier != lastLine[5]):
                             continue
                         continueCsv[4] = False
                         if classifier == "LSTM" or classifier == "LSTM - Transposed":
                             for matrixSize in matrixSizeCsv:
-                                if (continueCsv[6] and matrixSize != int(lastLine[6])):
+                                if (continueCsv[6] and matrixSize != int(lastLine[7])):
                                     continue
                                 continueCsv[6] = False
                                 tic = time.time()
@@ -176,9 +176,9 @@ for dataset in dataSetCsv:
                                 log.write("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos\n")
                                 print("  " + tempoAgora() + " - Processamento de Linguagem Natural - " + nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + str(round(toc,2)) + " segundos")
                                 for classifierSize in classifierSizeCsv:
-                                    if (continueCsv[5] and classifierSize != int(lastLine[5])):
+                                    if (continueCsv[5] and classifierSize != int(lastLine[6])):
                                         continue
-                                    if (continueCsv[5] and classifierSize == int(lastLine[5])):
+                                    if (continueCsv[5] and classifierSize == int(lastLine[6])):
                                         continueCsv[5] = False
                                         continue
                                     tic = time.time()
@@ -199,9 +199,9 @@ for dataset in dataSetCsv:
 
                 for classifier in classifierCsv:
                     if classifier == "SVM":
-                        if (continueCsv[4] and classifier != lastLine[4]):
+                        if (continueCsv[4] and classifier != lastLine[5]):
                             continue
-                        if (continueCsv[4] and classifier == lastLine[4]):
+                        if (continueCsv[4] and classifier == lastLine[5]):
                             continueCsv[4] = False
                             continue
                         continueCsv[5] = False
@@ -218,9 +218,9 @@ for dataset in dataSetCsv:
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
 
                     if classifier == "Naive Bayes":
-                        if (continueCsv[4] and classifier != lastLine[4]):
+                        if (continueCsv[4] and classifier != lastLine[5]):
                             continue
-                        if (continueCsv[4] and classifier == lastLine[4]):
+                        if (continueCsv[4] and classifier == lastLine[5]):
                             continueCsv[4] = False
                             continue
                         continueCsv[5] = False
@@ -237,13 +237,13 @@ for dataset in dataSetCsv:
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
 
                     if classifier == "RNA":
-                        if (continueCsv[4] and classifier != lastLine[4]):
+                        if (continueCsv[4] and classifier != lastLine[5]):
                             continue
                         continueCsv[4] = False
                         for classifierSize in classifierSizeCsv:
-                            if (continueCsv[5] and classifierSize != int(lastLine[5])):
+                            if (continueCsv[5] and classifierSize != int(lastLine[6])):
                                 continue
-                            if (continueCsv[5] and classifierSize == int(lastLine[5])):
+                            if (continueCsv[5] and classifierSize == int(lastLine[6])):
                                 continueCsv[5] = False
                                 continue
                             continueCsv[6] = False
