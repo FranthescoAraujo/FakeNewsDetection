@@ -2,8 +2,6 @@ import time
 import os
 import csv
 import numpy as np
-
-from scipy.sparse import data
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 from PreProcessing import PreProcessing
 from DocumentRepresentationDoc2Vec import DocumentRepresentationDoc2Vec
@@ -62,9 +60,9 @@ for dataset in dataSetCsv:
             continue
         continueCsv[1] = False
         tic = time.time()
-        CORPUS_PATH = "../Corpus/Inglês/"
+        CORPUS_PATH = "../Corpus/inglês/"
         if dataset == "português":
-            CORPUS_PATH = "../Corpus/Português/"
+            CORPUS_PATH = "../Corpus/português/"
         folders = os.listdir(CORPUS_PATH)
         listNews = []
         listLabels = []
