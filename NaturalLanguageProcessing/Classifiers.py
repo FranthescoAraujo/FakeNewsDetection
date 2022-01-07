@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import tensorflow.keras as keras
 import numpy as np
+import joblib
+import os
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.model_selection import KFold
@@ -15,11 +17,34 @@ class Classifiers:
         self.xTrain, self.xTest, self.yTrain, self.yTest = np.array(xTrain), np.array(xTest), np.array(yTrain), np.array(yTest)
         self.metrics = {"accuracy":[0, 0], "precision":[0, 0], "recall":[0, 0], "AUC":[0, 0]}
 
+    def salvarSklearn(self, classifier, nlp):
+        path = "../Models/Classifiers/" + classifier + nlp
+        self.salvar(path)
+    
+    def salvarTensorflowRNA(self, classifier, classifierSize, nlp):
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + nlp
+        self.salvar(path)
+
+    def salvarTensorflowLSTM(self, classifier, classifierSize, matrixSize, nlp):
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + "/MatrixSize-" + str(matrixSize) + nlp
+        self.salvar(path)
+
+    def salvarTensorflowLSTMWithEmbedding(self, classifier, classifierSize, vectorSize, nlp):
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + "/VectorSize-" + str(vectorSize) + nlp
+        self.salvar(path)
+
+    def salvar(self, path):
+        if not os.path.exists(path):
+            os.makedirs(path)
+        joblib.dump(self.classificador, path + "/classifier.joblib.pkl")
+
     def setTitle(self, title):
         self.title = title
     
-    def setLocalSave(self, localSave):
-        self.localSave = localSave
+    def setLocalSave(self, path, name):
+        if not os.path.exists(path):
+            os.makedirs(path)
+        self.localSave = path + name
 
     def supportVectorMachine(self):
         svm = SVC(C=1, probability=True ,random_state=42)
@@ -38,23 +63,23 @@ class Classifiers:
         ])
         return self.__crossValidationTensorflow(model, callback)
 
-    def longShortTermMemory(self, lstm_size = 100,  vector_size = 100, matrix_size = 100, isTransposed = False):
+    def longShortTermMemory(self, lstm_size = 100,  vector_size = 100, matrix_size = 100):
         callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
-        if (isTransposed):
-            model = keras.Sequential([
-            keras.layers.LSTM(lstm_size, input_shape=(vector_size, matrix_size)),
+        model = keras.Sequential([
+            keras.layers.LSTM(lstm_size, input_shape=(matrix_size, vector_size)),
             keras.layers.Dense(1, activation='sigmoid')
-            ])
-            self.xTrain = np.transpose(self.xTrain, (0,2,1))
-            self.xTest = np.transpose(self.xTest, (0,2,1))
-            return self.__crossValidationTensorflow(model, callback)
-        else:
-            model = keras.Sequential([
+        ])
+        return self.__crossValidationTensorflow(model, callback)
+
+    def longShortTermMemoryWithEmbedding(self, input_dim, lstm_size = 100,  vector_size = 100, matrix_size = 100):
+        callback = keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
+        model = keras.Sequential([
+                keras.layers.Embedding(input_dim + 2, vector_size, input_length=matrix_size),
                 keras.layers.LSTM(lstm_size, input_shape=(matrix_size, vector_size)),
                 keras.layers.Dense(1, activation='sigmoid')
             ])
-            return self.__crossValidationTensorflow(model, callback)
-        
+        return self.__crossValidationTensorflow(model, callback)
+
     def __crossValidationSklearn(self, classifier):
         f, axes = plt.subplots(2, 3, figsize=(10, 5))
         plt.suptitle(self.title, fontsize=10)
@@ -70,6 +95,7 @@ class Classifiers:
             xTrain, xValidation = self.xTrain[train_index], self.xTrain[validation_index]
             yTrain, yValidation = self.yTrain[train_index], self.yTrain[validation_index]
             classifier.fit(xTrain, yTrain)
+            self.classificador = classifier
             pred_proba = classifier.predict_proba(self.xTest)
             precision, recall, _ = precision_recall_curve(self.yTest, pred_proba[:,1])
             yPred = classifier.predict(self.xTest)
@@ -125,6 +151,7 @@ class Classifiers:
             yTrain, yValidation = self.yTrain[train_index], self.yTrain[validation_index]
             classifier.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
             classifier.fit(xTrain, yTrain, epochs=10, validation_data=(xValidation, yValidation), callbacks=[callback], verbose=0)
+            self.classificador = classifier
             yPred = classifier.predict(self.xTest)
             pred_proba = yPred
             yPred = np.round(yPred).astype(int)

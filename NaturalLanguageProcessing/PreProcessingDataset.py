@@ -14,15 +14,15 @@ def salvarJson(path, dataset, removeStopWords, list, labels):
     f.close()
 
 PATH_JSON = "../Json/"
-dataSetCsv = ["português", "inglês"]
+dataSetCsv = ["Português", "Inglês"]
 removeStopWordsCsv = [True, False]
 
 for dataset in dataSetCsv:
     for removeStopWords in removeStopWordsCsv:
         tic = time.time()
-        CORPUS_PATH = "../Corpus/inglês/"
-        if dataset == "português":
-            CORPUS_PATH = "../Corpus/português/"
+        CORPUS_PATH = "../Corpus/Inglês/"
+        if dataset == "Português":
+            CORPUS_PATH = "../Corpus/Português/"
         folders = os.listdir(CORPUS_PATH)
         listNews = []
         listLabels = []
