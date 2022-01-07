@@ -30,7 +30,7 @@ def apagarResults(apagar):
 
 LOCAL_PATH = "E:/FakeNewsDetection/NaturalLanguageProcessing/"
 RESULT_PATH = "Results/"
-apagarTudo = False
+apagarTudo = True
 
 # dataSetCsv = ["Português", "Inglês"]
 # removeStopWordsCsv = [True, False]
