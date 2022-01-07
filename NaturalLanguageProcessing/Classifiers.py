@@ -95,7 +95,6 @@ class Classifiers:
             xTrain, xValidation = self.xTrain[train_index], self.xTrain[validation_index]
             yTrain, yValidation = self.yTrain[train_index], self.yTrain[validation_index]
             classifier.fit(xTrain, yTrain)
-            self.classificador = classifier
             pred_proba = classifier.predict_proba(self.xTest)
             precision, recall, _ = precision_recall_curve(self.yTest, pred_proba[:,1])
             yPred = classifier.predict(self.xTest)
@@ -114,6 +113,11 @@ class Classifiers:
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
+            if (len(AUCList) > 1):
+                if (AUCList[i] > AUCList[i-1]):
+                    self.classificador = classifier
+                    continue
+            self.classificador = classifier
         y_real = np.concatenate(y_real)
         y_proba = np.concatenate(y_proba)
         precision, recall, _ = precision_recall_curve(y_real, y_proba)
@@ -170,6 +174,11 @@ class Classifiers:
             accuracyList.append(accuracy_score(self.yTest, yPred))
             precisionList.append(precision_score(self.yTest, yPred))
             recallList.append(recall_score(self.yTest, yPred))
+            if (len(AUCList) > 1):
+                if (AUCList[i] > AUCList[i-1]):
+                    self.classificador = classifier
+                    continue
+            self.classificador = classifier
         y_real = np.concatenate(y_real)
         y_proba = np.concatenate(y_proba)
         precision, recall, _ = precision_recall_curve(y_real, y_proba)

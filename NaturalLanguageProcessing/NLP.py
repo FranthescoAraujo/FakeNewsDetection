@@ -30,7 +30,7 @@ def apagarResults(apagar):
 
 LOCAL_PATH = "E:/FakeNewsDetection/NaturalLanguageProcessing/"
 RESULT_PATH = "Results/"
-apagarTudo = True
+apagarTudo = False
 
 # dataSetCsv = ["Português", "Inglês"]
 # removeStopWordsCsv = [True, False]
@@ -58,7 +58,6 @@ continueCsv = [True] * 7
 if apagarTudo:
     continueCsv = [False] * 7
 resultsCsv, lastLine = apagarResults(apagarTudo)
-print(lastLine)
 if not os.path.exists(RESULT_PATH):
     os.makedirs(RESULT_PATH)
 csvFile = open(RESULT_PATH + "results.csv", "w")
@@ -156,7 +155,7 @@ for dataset in dataSetCsv:
                                     classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + classifier + " - output size = " + str(classifierSize))
                                     classificador.setLocalSave("Results/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + classifier, "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize))
                                     metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
-                                    classificador.salvarTensorflowLSTM(classifier, classifierSize, matrixSize, "/" + dataset + "/RemoveStopWords-" + removeStopWords + "/" + nlp + "/VectorSize-" + vectorSize)
+                                    classificador.salvarTensorflowLSTM(classifier, classifierSize, matrixSize, "/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + nlp + "/VectorSize-" + str(vectorSize))
                                     hiperlink = LOCAL_PATH + "Results/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize) + ".png"
                                     results.writerow([hiperlink, dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
                                     toc = time.time() - tic
