@@ -41,7 +41,7 @@ class Classifiers:
     def salvarTensorflow(self, path):
         if not os.path.exists(path):
             os.makedirs(path)
-        self.classificador.save(path + "/classifier")
+        self.classificador.save(path + "/classifier", overwrite=True, save_format="h5")
 
     def setTitle(self, title):
         self.title = title

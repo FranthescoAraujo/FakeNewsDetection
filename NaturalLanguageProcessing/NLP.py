@@ -30,7 +30,7 @@ def apagarResults(apagar):
 
 LOCAL_PATH = "E:/FakeNewsDetection/NaturalLanguageProcessing/"
 RESULT_PATH = "Results/"
-apagarTudo = False
+apagarTudo = True
 
 # dataSetCsv = ["Português", "Inglês"]
 # removeStopWordsCsv = [True, False]
@@ -47,7 +47,7 @@ dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
 naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
-                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
+                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed"
                                 "Tensorflow Embedding"]
 vectorSizeCsv = [100, 200, 300]
 classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
@@ -57,6 +57,7 @@ matrixSizeCsv = [10, 50, 100]
 continueCsv = [True] * 7
 if apagarTudo:
     continueCsv = [False] * 7
+    os.remove(RESULT_PATH + "log.txt")
 resultsCsv, lastLine = apagarResults(apagarTudo)
 if not os.path.exists(RESULT_PATH):
     os.makedirs(RESULT_PATH)
@@ -190,7 +191,7 @@ for dataset in dataSetCsv:
                                     classificador = Classifiers(xTrain, xTest, yTrain, yTest)
                                     classificador.setTitle(nlp + " - vector size = " + str(vectorSize) + " - matrix size = " + str(matrixSize) + " - " + classifier + " - output size = " + str(classifierSize))
                                     classificador.setLocalSave("Results/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + classifier, "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize))
-                                    metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize, isTransposed=True)
+                                    metrics = classificador.longShortTermMemory(vector_size=vectorSize, lstm_size=classifierSize, matrix_size=matrixSize)
                                     classificador.salvarTensorflowLSTM(classifier, classifierSize, matrixSize, "/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + nlp + "/VectorSize-" + str(vectorSize))
                                     hiperlink = LOCAL_PATH + "Results/" + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/" + classifier + "/" + nlp + " - vectorSize-" + str(vectorSize) + " - outputSize-" + str(classifierSize) + " - matrixSize-" + str(matrixSize) + ".png"
                                     results.writerow([hiperlink, dataset, removeStopWords, nlp, vectorSize, classifier, classifierSize, matrixSize, metrics["accuracy"][0], metrics["accuracy"][1], metrics["precision"][0], metrics["precision"][1], metrics["recall"][0], metrics["recall"][1], metrics["AUC"][0], metrics["AUC"][1]])
