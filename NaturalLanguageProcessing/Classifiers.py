@@ -22,21 +22,26 @@ class Classifiers:
         self.salvar(path)
     
     def salvarTensorflowRNA(self, classifier, classifierSize, nlp):
-        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + nlp
-        self.salvar(path)
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSize-" + str(classifierSize) + nlp
+        self.salvarTensorflow(path)
 
     def salvarTensorflowLSTM(self, classifier, classifierSize, matrixSize, nlp):
-        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + "/MatrixSize-" + str(matrixSize) + nlp
-        self.salvar(path)
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSize-" + str(classifierSize) + "/MatrixSize-" + str(matrixSize) + nlp
+        self.salvarTensorflow(path)
 
     def salvarTensorflowLSTMWithEmbedding(self, classifier, classifierSize, vectorSize, nlp):
-        path = "../Models/Classifiers/" + classifier + "/ClassifierSizer-" + str(classifierSize) + "/VectorSize-" + str(vectorSize) + nlp
-        self.salvar(path)
+        path = "../Models/Classifiers/" + classifier + "/ClassifierSize-" + str(classifierSize) + "/VectorSize-" + str(vectorSize) + nlp
+        self.salvarTensorflow(path)
 
     def salvar(self, path):
         if not os.path.exists(path):
             os.makedirs(path)
         joblib.dump(self.classificador, path + "/classifier.joblib.pkl")
+
+    def salvarTensorflow(self, path):
+        if not os.path.exists(path):
+            os.makedirs(path)
+        self.classificador.save(path + "/classifier")
 
     def setTitle(self, title):
         self.title = title
