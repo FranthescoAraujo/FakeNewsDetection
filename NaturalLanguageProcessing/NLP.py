@@ -30,13 +30,13 @@ def apagarResults(apagar):
 
 LOCAL_PATH = "E:/FakeNewsDetection/NaturalLanguageProcessing/"
 RESULT_PATH = "Results/"
-apagarTudo = True
+apagarTudo = False
 
 # dataSetCsv = ["Português", "Inglês"]
 # removeStopWordsCsv = [True, False]
 # naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
 #                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
-#                                 "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed"
+#                                 "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
 #                                 "Tensorflow Embedding"]
 # vectorSizeCsv = [100, 200, 300]
 # classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
@@ -47,7 +47,7 @@ dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
 naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
-                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed"
+                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
                                 "Tensorflow Embedding"]
 vectorSizeCsv = [100, 200, 300]
 classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
@@ -55,12 +55,13 @@ classifierSizeCsv = [10, 50, 100]
 matrixSizeCsv = [10, 50, 100]
 
 continueCsv = [True] * 7
-if apagarTudo:
-    continueCsv = [False] * 7
-    os.remove(RESULT_PATH + "log.txt")
-resultsCsv, lastLine = apagarResults(apagarTudo)
 if not os.path.exists(RESULT_PATH):
     os.makedirs(RESULT_PATH)
+if apagarTudo:
+    continueCsv = [False] * 7
+    if os.path.exists(RESULT_PATH + "log.txt"):
+        os.remove(RESULT_PATH + "log.txt")
+resultsCsv, lastLine = apagarResults(apagarTudo)
 csvFile = open(RESULT_PATH + "results.csv", "w")
 results = csv.writer(csvFile)
 for linha in resultsCsv:
