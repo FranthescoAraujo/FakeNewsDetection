@@ -98,25 +98,21 @@ class DocumentRepresentationWord2Vec:
             index = 0
             for word in document:
                 if index >= matrix_size:
-                    returnXTrain.append(documentRepresentation)
-                    documentRepresentation = []
                     break
-                if word not in model:
-                    continue
-                documentRepresentation[index] = model[word]
-                index += 1
+                if word in model:
+                    documentRepresentation[index] = model[word]
+                    index += 1
+            returnXTrain.append(documentRepresentation)
         for document in self.xTest:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
                 if index >= matrix_size:
-                    returnXTest.append(documentRepresentation)
-                    documentRepresentation = []
                     break
-                if word not in model:
-                    continue
-                documentRepresentation[index] = model[word]
-                index += 1
+                if word in model:
+                    documentRepresentation[index] = model[word]
+                    index += 1
+            returnXTest.append(documentRepresentation)
         return returnXTrain, returnXTest
     
     def continuousBagOfWordsMatrixDocumentRepresentation(self, window_size = 10, vector_size = 100, matrix_size = 100):
@@ -129,25 +125,21 @@ class DocumentRepresentationWord2Vec:
             index = 0
             for word in document:
                 if index >= matrix_size:
-                    returnXTrain.append(documentRepresentation)
-                    documentRepresentation = []
                     break
-                if word not in model:
-                    continue
-                documentRepresentation[index] = model[word]
-                index += 1
+                if word in model:
+                    documentRepresentation[index] = model[word]
+                    index += 1
+            returnXTrain.append(documentRepresentation)
         for document in self.xTest:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
                 if index >= matrix_size:
-                    returnXTest.append(documentRepresentation)
-                    documentRepresentation = []
                     break
-                if word not in model:
-                    continue
-                documentRepresentation[index] = model[word]
-                index += 1
+                if word in model:
+                    documentRepresentation[index] = model[word]
+                    index += 1
+            returnXTest.append(documentRepresentation)
         return returnXTrain, returnXTest
         
     def skipGramMatrixTransposedDocumentRepresentation(self, window_size = 10, vector_size = 100, matrix_size = 100):
