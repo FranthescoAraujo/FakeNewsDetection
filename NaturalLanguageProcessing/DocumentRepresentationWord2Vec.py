@@ -97,7 +97,7 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
-                if index >= matrix_size or index == (len(document)-1):
+                if index >= matrix_size:
                     returnXTrain.append(documentRepresentation)
                     documentRepresentation = []
                     break
@@ -109,7 +109,7 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
-                if index >= matrix_size or index == (len(document)-1):
+                if index >= matrix_size:
                     returnXTest.append(documentRepresentation)
                     documentRepresentation = []
                     break
@@ -128,7 +128,7 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
-                if index >= matrix_size or index == (len(document)-1):
+                if index >= matrix_size:
                     returnXTrain.append(documentRepresentation)
                     documentRepresentation = []
                     break
@@ -140,7 +140,7 @@ class DocumentRepresentationWord2Vec:
             documentRepresentation = [[0]*vector_size]*matrix_size
             index = 0
             for word in document:
-                if index >= matrix_size or index == (len(document)-1):
+                if index >= matrix_size:
                     returnXTest.append(documentRepresentation)
                     documentRepresentation = []
                     break
