@@ -29,7 +29,7 @@ def returnLastLine(continueCsv):
     for linha in leitor:
         resultsCsv.append(linha)
     csvFile.close()
-    if len(resultsCsv) == 1:
+    if len(resultsCsv) <= 1:
         csvFile = open(RESULT_PATH + "results.csv", "w")
         leitor = csv.writer(csvFile)
         leitor.writerow(["LOCAL IMAGENS", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"])
