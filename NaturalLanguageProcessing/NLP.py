@@ -14,19 +14,31 @@ from sklearn.model_selection import train_test_split
 def tempoAgora():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-def apagarResults(apagar):
-    if (not apagar):
-        csvFile = open(RESULT_PATH + "results.csv", "r")
-        leitor = csv.reader(csvFile)
-        resultsCsv = []
-        for linha in leitor:
-            resultsCsv.append(linha)
+def returnLastLine(continueCsv):
+    if not os.path.exists(RESULT_PATH + "results.csv"):
+        csvFile = open(RESULT_PATH + "results.csv", "a")
+        leitor = csv.writer(csvFile)
+        leitor.writerow(["LOCAL IMAGENS", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"])
         csvFile.close()
-        lastLine = resultsCsv[-1]
-        return resultsCsv, lastLine
-    resultsCsv = [["LOCAL IMAGENS", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"]]
-    lastLine = resultsCsv
-    return resultsCsv, lastLine
+        lastLine = [""] * 8
+        continueCsv = [False] * 7
+        return continueCsv, lastLine
+    csvFile = open(RESULT_PATH + "results.csv", "r")
+    leitor = csv.reader(csvFile)
+    resultsCsv = []
+    for linha in leitor:
+        resultsCsv.append(linha)
+    csvFile.close()
+    if len(resultsCsv) == 1:
+        csvFile = open(RESULT_PATH + "results.csv", "w")
+        leitor = csv.writer(csvFile)
+        leitor.writerow(["LOCAL IMAGENS", "DATASET", "REMOVE STOP WORDS", "NATURAL LANGUAGE PROCESSING", "VECTOR SIZE", "CLASSIFIER", "CLASSIFIER SIZE", "MATRIX SIZE", "ACCURACY AVERAGE", "ACCURACY STANDARD DEVIATION", "PRECISION AVERAGE", "PRECISION STANDARD DEVIATION", "RECALL AVERAGE", "RECALL STANDARD DEVIATION", "AUC-PR AVERAGE", "AUC-PR STANDARD DEVIATION"])
+        csvFile.close()
+        lastLine = [""] * 8
+        continueCsv = [False] * 7
+        return continueCsv, lastLine
+    lastLine = resultsCsv[-1]
+    return continueCsv, lastLine
 
 LOCAL_PATH = "E:/FakeNewsDetection/NaturalLanguageProcessing/"
 RESULT_PATH = "Results/"
@@ -43,7 +55,7 @@ apagarTudo = False
 # classifierSizeCsv = [10, 50, 100]
 # matrixSizeCsv = [10, 50, 100]
 
-dataSetCsv = ["Português"]
+dataSetCsv = ["Português", "Inglês"]
 removeStopWordsCsv = [True, False]
 naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
@@ -54,20 +66,21 @@ classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
 classifierSizeCsv = [10, 50, 100]
 matrixSizeCsv = [10, 50, 100]
 
-continueCsv = [True] * 7
 if not os.path.exists(RESULT_PATH):
     os.makedirs(RESULT_PATH)
+
+continueCsv = [True] * 7
 if apagarTudo:
     continueCsv = [False] * 7
     if os.path.exists(RESULT_PATH + "log.txt"):
         os.remove(RESULT_PATH + "log.txt")
-resultsCsv, lastLine = apagarResults(apagarTudo)
-csvFile = open(RESULT_PATH + "results.csv", "w")
-results = csv.writer(csvFile)
-for linha in resultsCsv:
-    results.writerow(linha)
+    if os.path.exists(RESULT_PATH + "results.csv"):
+        os.remove(RESULT_PATH + "results.csv")
+
+continueCsv, lastLine = returnLastLine(continueCsv)
+csvFile = open(RESULT_PATH + "results.csv", "a")
 log = open(RESULT_PATH + "log.txt", "a")
-del resultsCsv
+results = csv.writer(csvFile)
 
 for dataset in dataSetCsv:
     if (continueCsv[0] and dataset != lastLine[1]):
@@ -335,6 +348,8 @@ for dataset in dataSetCsv:
                         log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos\n")
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
 
+                        continue
+
                     if classifier == "Naive Bayes":
                         if (continueCsv[4] and classifier != lastLine[5]):
                             continue
@@ -356,6 +371,8 @@ for dataset in dataSetCsv:
                         toc = time.time() - tic
                         log.write("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos\n")
                         print("    " + tempoAgora() + " - Classificação - " + classifier + " - " + str(round(toc,2)) + " segundos")
+
+                        continue
 
                     if classifier == "RNA":
                         if (continueCsv[4] and classifier != lastLine[5]):
