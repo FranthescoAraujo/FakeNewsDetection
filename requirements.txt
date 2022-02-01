@@ -1,5 +1,4 @@
-numpy
-scipy
-gensim
-matplotlib
-sklearn
+gensim==4.1.2
+sklearn==0.0
+tensorflow==2.7.0
+matplotlib==3.5.1

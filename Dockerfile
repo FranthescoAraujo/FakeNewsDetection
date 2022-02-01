@@ -1,8 +1,8 @@
-FROM tensorflow/tensorflow:latest-gpu
+FROM python:3.8.12
 
 RUN python3 -m pip install --upgrade pip
 
-WORKDIR /application
+WORKDIR /FakeNewsDetection
 
 COPY requirements.txt .
 

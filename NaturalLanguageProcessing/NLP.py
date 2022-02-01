@@ -55,7 +55,7 @@ apagarTudo = False
 # classifierSizeCsv = [10, 50, 100]
 # matrixSizeCsv = [10, 50, 100]
 
-dataSetCsv = ["Português", "Inglês"]
+dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
 naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
