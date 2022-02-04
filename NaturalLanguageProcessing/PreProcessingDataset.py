@@ -9,7 +9,9 @@ def tempoAgora():
 
 def salvarJson(path, dataset, removeStopWords, list, labels):
     data = {"dataset":list, "labels":labels}
-    f = open(path + dataset + "/stopWords-" + str(removeStopWords) + "/dataset.json", "w")
+    if not os.path.exists(path + dataset + "/RemoveStopWords-" + str(removeStopWords)):
+        os.makedirs(path + dataset + "/RemoveStopWords-" + str(removeStopWords))
+    f = open(path + dataset + "/RemoveStopWords-" + str(removeStopWords) + "/dataset.json", "w")
     json.dump(data, f)
     f.close()
 
