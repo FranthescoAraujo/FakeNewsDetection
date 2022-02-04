@@ -87,7 +87,7 @@ for dataset in dataSetCsv:
         continue
     continueCsv[0] = False
     for removeStopWords in removeStopWordsCsv:
-        if (continueCsv[1] and removeStopWords != bool(lastLine[2])):
+        if (continueCsv[1] and str(removeStopWords) != lastLine[2]):
             continue
         continueCsv[1] = False
         tic = time.time()
