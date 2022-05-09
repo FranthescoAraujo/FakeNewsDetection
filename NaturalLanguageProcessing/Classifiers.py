@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import tensorflow.keras as keras
+import sys
 import numpy as np
+np.set_printoptions(threshold=sys.maxsize)
 import joblib
 import os
 from sklearn.naive_bayes import GaussianNB

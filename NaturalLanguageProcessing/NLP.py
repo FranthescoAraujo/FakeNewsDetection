@@ -50,10 +50,10 @@ apagarTudo = False
 #                                 "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
 #                                 "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
 #                                 "Tensorflow Embedding"]
-# vectorSizeCsv = [100, 200, 300]
+# vectorSizeCsv = [20, 30, 40, 100, 200, 300]
 # classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
 # classifierSizeCsv = [10, 50, 100]
-# matrixSizeCsv = [10, 50, 100]
+# matrixSizeCsv = [10, 50, 100, 300, 400, 500]
 
 dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
@@ -91,16 +91,23 @@ for dataset in dataSetCsv:
             continue
         continueCsv[1] = False
         tic = time.time()
-        CORPUS_PATH = "../Json/Inglês/" + "RemoveStopWords-" + str(removeStopWords) + "/dataset.json"
+        CORPUS_PATH_TRAIN = "../Json/Inglês/" + "RemoveStopWords-" + str(removeStopWords) + "/datasetTrain.json"
+        CORPUS_PATH_TEST = "../Json/Inglês/" + "RemoveStopWords-" + str(removeStopWords) + "/datasetTest.json"
         if dataset == "Português":
-            CORPUS_PATH = "../Json/Português/" + "RemoveStopWords-" + str(removeStopWords) + "/dataset.json"
-        f = open(CORPUS_PATH, "r")
-        data = json.load(f)
+            CORPUS_PATH_TRAIN = "../Json/Português/" + "RemoveStopWords-" + str(removeStopWords) + "/datasetTrain.json"
+            CORPUS_PATH_TEST = "../Json/Português/" + "RemoveStopWords-" + str(removeStopWords) + "/datasetTest.json"
+        f = open(CORPUS_PATH_TRAIN, "r")
+        dataTrain = json.load(f)
         f.close()
-        listNews = data["dataset"]
-        listLabels = data["labels"]
-        listNewsTrain, listNewsTest, yTrain, yTest = train_test_split(np.array(listNews), np.array(listLabels), test_size=0.3, random_state=42)
-        del listNews, listLabels
+        listNewsTrain = dataTrain["dataset"]
+        yTrain = dataTrain["labels"]
+        del dataTrain
+        f = open(CORPUS_PATH_TEST, "r")
+        dataTest = json.load(f)
+        f.close()
+        listNewsTest = dataTest["dataset"]
+        yTest = dataTest["labels"]
+        del dataTest
         toc = time.time() - tic
         log.write(tempoAgora() + " - Carregando dataset " + dataset + " - RemoveStopWords = " + str(removeStopWords) + " - " + str(round(toc,2)) + " segundos\n")
         print(tempoAgora() + " - Carregando dataset " + dataset + " - RemoveStopWords = " + str(removeStopWords) + " - " + str(round(toc,2)) + " segundos")

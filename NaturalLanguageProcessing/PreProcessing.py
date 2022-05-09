@@ -1,4 +1,8 @@
 import json
+import random
+import nltk
+import re
+# nltk.download('rslp')
 
 class PreProcessing:
     def toLowerCase(documents):
@@ -15,10 +19,9 @@ class PreProcessing:
         return returnValue
 
     def removeSpecialCharacters(documents):
-        import re
         returnValue = []
         for document in documents:
-            returnValue.append(re.sub('[^A-Za-z0-9\']+', ' ', document))
+            returnValue.append(re.sub('\W+', ' ', document))
         return returnValue
         
     def removeNumerals(documents):
@@ -45,7 +48,39 @@ class PreProcessing:
             returnValueDocuments.append(documents[index])
             returnValueLabels.append(labels[index])
         return returnValueDocuments, returnValueLabels
-        
+
+    def removeDocumentsWithManyWords(documents, dataset, numWordsMin = 50, numWordsMax = 150):
+        if dataset == "Português":
+            returnValueDocuments = []
+            for documentIndex, document in enumerate(documents):
+                numWords = random.randint(numWordsMin, numWordsMax)
+                documentSplit = document.split()
+                quantidadePalavras = len(documentSplit)
+                if (quantidadePalavras >= numWords):
+                    valorInicial = random.randint(0, (quantidadePalavras - numWords))
+                    documentSplit = documentSplit[valorInicial:(valorInicial + numWords)]
+                text = ""
+                for word in documentSplit:
+                    text += word + " "
+                returnValueDocuments.append(text)
+            return returnValueDocuments
+        return documents
+
+    def convertWordsToStemming(documents, dataset = "Português"):
+        if dataset == "Português":
+            return PreProcessing.__convert(documents)
+        return documents
+
+    def __convert(documents):
+        stemmer = nltk.stem.RSLPStemmer()
+        returnValue = []
+        for document in documents:
+            text = ""
+            for word in document.split():
+                text += str(stemmer.stem(word)) + " "
+            returnValue.append(text)
+        return returnValue
+
     def __remove(jsonFile, documents):
         returnValue = []
         f = open(jsonFile)
