@@ -24,7 +24,7 @@ def preProcessingData(PATH_JSON, dataset, removeStopWords, listNews, listLabels,
     listNews = PreProcessing.toLowerCase(listNews)
     if removeStopWords:
         listNews = PreProcessing.removeStopWords(listNews, dataset)
-    listNews = PreProcessing.convertWordsToStemming(listNews, dataset)
+    # listNews = PreProcessing.convertWordsToStemming(listNews, dataset)
     listNews, listLabels = PreProcessing.removeDocumentsWithFewWords(listNews, listLabels)
     # newlistNews = PreProcessing.removeDocumentsWithManyWords(newlistNews, dataset)
     # calcularNumeroPalavras(newlistNews, listLabels, dataset, removeStopWords)
@@ -75,7 +75,9 @@ def calcularNumeroPalavras(documents, listLabels, dataset, removeStopWords):
 
 PATH_JSON = "../Json/"
 PATH_JSON_TEST = "../JsonTest/"
-dataSetCsv = ["Português", "Inglês"]
+# dataSetCsv = ["Português", Inglês]
+# removeStopWordsCsv = [True, False]
+dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
 
 for dataset in dataSetCsv:
@@ -84,10 +86,9 @@ for dataset in dataSetCsv:
         CORPUS_PATH = "../Corpus/Inglês/"
         if dataset == "Português":
             CORPUS_PATH = "../Corpus/Português/"
-        folders = os.listdir(CORPUS_PATH)
         listNews = []
         listLabels = []
-        for folder in folders:
+        for folder in os.listdir(CORPUS_PATH):
             for file in os.listdir(CORPUS_PATH + folder):
                 f = open(CORPUS_PATH + folder + "/" + file, "r")
                 listNews.append(f.read())

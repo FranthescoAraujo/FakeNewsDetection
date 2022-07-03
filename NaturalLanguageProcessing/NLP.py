@@ -55,16 +55,25 @@ apagarTudo = False
 # classifierSizeCsv = [10, 50, 100]
 # matrixSizeCsv = [10, 50, 100, 300, 400, 500]
 
+# dataSetCsv = ["Português"]
+# removeStopWordsCsv = [True, False]
+# naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
+#                         cd        "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
+#                                 "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
+#                                 "Tensorflow Embedding"]
+# vectorSizeCsv = [100, 200, 300]
+# classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
+# classifierSizeCsv = [10, 50, 100]
+# matrixSizeCsv = [10, 50, 100]
+
 dataSetCsv = ["Português"]
 removeStopWordsCsv = [True, False]
-naturalLanguageProcessingCsv = ["Doc2vec - PV-DM", "Doc2vec - PV-DBOW", "Doc2vec - Concatenated",
-                                "Word2vec - Skipgram - Sum", "Word2vec - Skipgram - Average", "Word2vec - CBOW - Sum", "Word2vec - CBOW - Average",
-                                "Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
+naturalLanguageProcessingCsv = ["Word2vec - Skipgram - Matrix", "Word2vec - CBOW - Matrix", "Word2vec - Skipgram - Matrix Transposed", "Word2vec - CBOW - Matrix Transposed",
                                 "Tensorflow Embedding"]
-vectorSizeCsv = [100, 200, 300]
-classifierCsv = ["SVM", "Naive Bayes", "RNA", "LSTM", "LSTM With Embedding"]
+vectorSizeCsv = [20, 30, 40]
+classifierCsv = ["LSTM", "LSTM With Embedding"]
 classifierSizeCsv = [10, 50, 100]
-matrixSizeCsv = [10, 50, 100]
+matrixSizeCsv = [300, 400, 500]
 
 if not os.path.exists(RESULT_PATH):
     os.makedirs(RESULT_PATH)
