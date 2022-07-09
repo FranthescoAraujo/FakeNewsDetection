@@ -29,6 +29,8 @@ def preProcessingData(PATH_JSON, dataset, removeStopWords, listNews, listLabels,
     # newlistNews = PreProcessing.removeDocumentsWithManyWords(newlistNews, dataset)
     # calcularNumeroPalavras(newlistNews, listLabels, dataset, removeStopWords)
     salvarJson(PATH_JSON, dataset, removeStopWords, listNews, listLabels, name)
+    print(listNews[0])
+    print(listLabels[0])
     del listNews, listLabels
 
 def calcularNumeroPalavras(documents, listLabels, dataset, removeStopWords):
@@ -73,12 +75,23 @@ def calcularNumeroPalavras(documents, listLabels, dataset, removeStopWords):
     print("Dataset = " + dataset + " RemoveStopWords = " + str(removeStopWords) + " minNumeroPalavrasFalse = " + str(minNumeroPalavrasFalse))
     print("Dataset = " + dataset + " RemoveStopWords = " + str(removeStopWords) + " maxNumeroPalavrasFalse = " + str(maxNumeroPalavrasFalse))
 
+def trainTestSplit(listNews, listLabels, test_size=0.3, random_state=42):
+    listNewsIds = list(range(len(listNews)))
+    listNewsTrainIds, listNewsTestIds, yTrain, yTest = train_test_split(np.array(listNewsIds), np.array(listLabels), test_size=0.3, random_state=42)
+    returnListNewsTrain = []
+    returnListNewsTest = []
+    for id in listNewsTrainIds:
+        returnListNewsTrain.append(listNews[id])
+    for id in listNewsTestIds:
+        returnListNewsTest.append(listNews[id])
+    return returnListNewsTrain, returnListNewsTest, yTrain.tolist(), yTest.tolist()
+
 PATH_JSON = "../Json/"
 PATH_JSON_TEST = "../JsonTest/"
-# dataSetCsv = ["Português", Inglês]
-# removeStopWordsCsv = [True, False]
-dataSetCsv = ["Português"]
+dataSetCsv = ["Inglês"]
 removeStopWordsCsv = [True, False]
+# dataSetCsv = ["Português"]
+# removeStopWordsCsv = [True, False]
 
 for dataset in dataSetCsv:
     for removeStopWords in removeStopWordsCsv:
@@ -101,11 +114,8 @@ for dataset in dataSetCsv:
         print(tempoAgora() + " - Carregando dataset " + dataset + " - " + str(round(toc,2)) + " segundos")
 
         tic = time.time()
-        listNewsTrain, listNewsTest, yTrain, yTest = train_test_split(np.array(listNews), np.array(listLabels), test_size=0.3, random_state=42)
-        listNewsTrain = listNewsTrain.tolist()
-        listNewsTest = listNewsTest.tolist()
-        yTrain = yTrain.tolist()
-        yTest = yTest.tolist()
+        listNewsTrain, listNewsTest, yTrain, yTest = trainTestSplit(listNews, listLabels)
+        del listNews, listLabels
         salvarJson(PATH_JSON_TEST, dataset, removeStopWords, listNewsTest, yTest, "datasetTest")
         preProcessingData(PATH_JSON, dataset, removeStopWords, listNewsTrain, yTrain, "datasetTrain")
         preProcessingData(PATH_JSON, dataset, removeStopWords, listNewsTest, yTest, "datasetTest")
