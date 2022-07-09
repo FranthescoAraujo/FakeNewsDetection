@@ -29,10 +29,10 @@ def openAndConvertJson(PATH_JSON_TEST, PATH_CORPUS_TEST, dataset, removeStopWord
 
 PATH_JSON_TEST = "../JsonTest/"
 PATH_CORPUS_TEST = "../CorpusTest/"
-# dataSetCsv = ["Português", "Inglês"]
-# removeStopWordsCsv = [True, False]
-dataSetCsv = ["Português"]
+dataSetCsv = ["Inglês"]
 removeStopWordsCsv = [True, False]
+# dataSetCsv = ["Português"]
+# removeStopWordsCsv = [True, False]
 
 for dataset in dataSetCsv:
     for removeStopWords in removeStopWordsCsv:

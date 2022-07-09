@@ -29,8 +29,6 @@ def preProcessingData(PATH_JSON, dataset, removeStopWords, listNews, listLabels,
     # newlistNews = PreProcessing.removeDocumentsWithManyWords(newlistNews, dataset)
     # calcularNumeroPalavras(newlistNews, listLabels, dataset, removeStopWords)
     salvarJson(PATH_JSON, dataset, removeStopWords, listNews, listLabels, name)
-    print(listNews[0])
-    print(listLabels[0])
     del listNews, listLabels
 
 def calcularNumeroPalavras(documents, listLabels, dataset, removeStopWords):
